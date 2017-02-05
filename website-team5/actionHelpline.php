@@ -22,8 +22,15 @@
     }
 
 
+    echo "helpline";
 
-	$email = $_POST['email'];
+	if(!empty($_POST['email'])){
+		$email = $_POST['email'];
+	}	
+	else{
+		$email = "a";
+	}
+	
 					
 	if(empty($_POST['name']))
 		$name = "N/A";
@@ -41,7 +48,10 @@
 		$from = new DateTime($_POST['date']);
 		$to = new DateTime('today');
 		$age = $from->diff($to)->y; 
-	} echo nl2br("\n");
+	}
+
+	//echo $_POST['url'];
+	echo $_POST['VoIP'];
 
 	$var = isset($_POST['gender'])? $_POST['gender']:'' ; echo $var; //Gender
 	$var1 = isset($_POST['url'])? $_POST['url']: "N/A";//URL
