@@ -1,11 +1,9 @@
 <html>
-<body>
 
+	<?php
 
+	//HELPLINE COMPLAINT
 
-<?php
-	//HOTLINE COMPLAINT
-	
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -25,10 +23,8 @@
 
 
 
-	if(empty($_POST['email']))
-		$email = 'N/A';
-	else  
-		$email = $_POST['email'];
+	$email = $_POST['email'];
+					
 	if(empty($_POST['name']))
 		$name = "N/A";
 	else
@@ -53,7 +49,7 @@
 	$var3 = empty($_POST['Details'])? 'N/A': $_POST['Details'];//Details
 
 	//Prepare sql Statement
- 	$sql = "INSERT INTO HotlineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,$age,'$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
+ 	$sql = "INSERT INTO HelplineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,$age,'$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
     $statement = $conn->prepare($sql);
    
 	//Execute SQL statement
@@ -69,5 +65,5 @@
 
  ?>
 
-</body>
+
 </html>
