@@ -19,9 +19,10 @@
 	    	echo "Connection failed: " . $e->getMessage();
 	    }
 
+
 	    if(empty($_POST['username'])){
 			$username = 'No username given. Try again';
-			//echo '<script>';
+			//echo  '<script>';
 			//echo 'alert("ERROR: The username field is empty! Try again")';
 			//echo 'window.location.replace = "http://localhost/login/index.html"';
 			//echo 'window.location.replace(\"http://localhost")';
