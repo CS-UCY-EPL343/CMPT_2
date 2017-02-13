@@ -66,6 +66,7 @@
     	':var3' => $var3
     ));
 
+    echo "<script type='text/javascript'>alert('Complaint Submitted Succesfully');history.go(-1);</script>";
 
  ?>
 
