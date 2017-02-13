@@ -1,8 +1,10 @@
+
 <html>
 
 	<body>
 
 	<?php
+	//session_start();
 		$servername = "localhost";
 		
 
@@ -64,7 +66,11 @@
     	));
 
     	if($results = $statement->fetchAll(PDO::FETCH_ASSOC)){
-    		echo "you have logged in";
+    					echo ("<SCRIPT LANGUAGE='JavaScript'>
+            
+            window.location.href='http://localhost/leit/desp.html';
+            </SCRIPT>");
+    		//echo "you have logged in";
     	}	
     	else{
     		echo "wrong username or password";
