@@ -7,12 +7,13 @@
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
+          <link rel="stylesheet" href="style.css">
 
 
     <div id="auto">
     <script>
     //setTimeout(createjson, 3000);
-window.setInterval(createjson, 3000);
+window.setInterval(createjson, 1000);
      function createjson(){
 
 
@@ -35,7 +36,7 @@ window.setInterval(createjson, 3000);
 
 </div>  
 
-    <style>
+  <!--   <style>
        table, th, td 
         {
             margin:10px 0;
@@ -58,7 +59,7 @@ window.setInterval(createjson, 3000);
          }
 
 
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -67,7 +68,7 @@ window.setInterval(createjson, 3000);
     <div id="showData"></div>
 </body>
 <script>
-window.setInterval(showjson, 4000);
+window.setInterval(showjson, 2000);
      function showjson(){
     $(document).ready(function () {
         $.getJSON("empdata.json", function (data) {
