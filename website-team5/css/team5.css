@@ -176,8 +176,8 @@ fieldset[disabled] .btn-xl.active {
   background-color: #fed136;
 }
 .navbar-custom .nav li a {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  font-family:Georgia;
+  
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -239,7 +239,9 @@ fieldset[disabled] .btn-xl.active {
  
 }
 header {
-  background-image: url('../img/backround.jpg');
+  /*background-image: url('../img/backround.jpg');*/
+  background-color: ghostwhite;
+
   width: 100%;
   height: 100%;
   background-repeat: repeat;
@@ -298,15 +300,14 @@ header .intro-text .intro-heading {
 
 
 #myCarousel {
-width:58%;
+width:90%;
 
 }
 
 .carousel-outer{
 position: absolute;
 padding-left:4%;
-width:60%;
-
+width:90%;
 }
 
 
@@ -331,7 +332,8 @@ section h3.section-subheading {
 
 #portfolio {
  
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -577,7 +579,8 @@ background-repeat: repeat;
 }
 
 #portfolio{
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -594,7 +597,8 @@ background-repeat: repeat;
 
 
  #team{
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -609,7 +613,8 @@ background-repeat: repeat;
 
 
 #about{
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -622,7 +627,8 @@ background-repeat: repeat;
   
 }
 #faq{
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -656,7 +662,8 @@ background-repeat: repeat;
 
 .clients {
 
-background-image: url('../img/backround.jpg');
+/*background-image: url('../img/backround.jpg');*/
+background-color: ghostwhite;
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
@@ -682,8 +689,8 @@ aside.clients img {
   margin: 50px auto;
 }
 section#contact {
-  
-background-image: url('../img/backround.jpg');
+  background-color: ghostwhite;
+/*background-image: url('../img/backround.jpg');*/
 background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
