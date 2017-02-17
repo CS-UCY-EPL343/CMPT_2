@@ -2,6 +2,7 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 .text-muted {
   color: #777777;
@@ -302,18 +303,26 @@ header .intro-text .intro-heading {
 
 
 #myCarousel {
-width:108.5%;
-/*height: 10%;*/
+width:100%;
+margin-top:6%;
+  /*height: 10%;*/
+
 }
 
-.carousel-outer{
+@media(max-width: 400px){
+  margin-top: 5%;
+}
+
+
+
+  /* .carousel-outer{
 position: absolute;
-/*left:10%;*/
-width:90%;
-/*height: 10%;*/
+width:100%;
+
 top: 2%;
 
-}
+
+}*/
 
 
 
@@ -346,13 +355,13 @@ background-repeat: repeat;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-padding-top: 80%
+padding-top:10%;
 }
 
 
 @media (min-width: 768px) {
   section {
-    padding: 80px 0;
+    padding: 5%;
   }
 }
 .service-heading {
@@ -909,4 +918,18 @@ width: 100px
   padding-bottom: 2%;
   padding-top: 16%;
   max-width: 60%
+}
+
+
+.chatbutton {
+
+  margin-top: 40%;
+ /* margin-left:5%;*/
+  position:fixed;
+  background-color: orange;
+  border: none;
+
+
+
+
 }
