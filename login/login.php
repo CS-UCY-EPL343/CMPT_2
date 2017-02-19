@@ -1,4 +1,8 @@
 
+<?php
+session_start();
+?>
+
 <html>
 
 	<body>
@@ -43,11 +47,10 @@
 			$username = 'No username given. Try again';
 
 			
-			echo ("<SCRIPT LANGUAGE='JavaScript'>
+						echo ("<SCRIPT LANGUAGE='JavaScript'>
             window.alert('ERROR: The Password field is empty! Try again')
             window.location.href='http://localhost/login/index.html';
             </SCRIPT>");
-
 		}
 		else
 		$password = $_POST['password'];
@@ -62,14 +65,22 @@
     	$query = $statement->execute(array(
     	':username' => $username,
     	':password' => $password
+
     	
     	));
+
+    	//echo "$username";
+    	//$_SESSION["user"]= $username;
+
+
+//echo $_SESSION["user"];
 
     	if($results = $statement->fetchAll(PDO::FETCH_ASSOC)){
     					echo ("<SCRIPT LANGUAGE='JavaScript'>
             
-            window.location.href='http://localhost/leit/desp.html';
+            window.location.href='http://localhost/leit/desp.php';
             </SCRIPT>");
+    					$_SESSION["user"]= $username;
     		//echo "you have logged in";
     	}	
     	else{
