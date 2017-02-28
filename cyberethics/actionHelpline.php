@@ -5,13 +5,13 @@
 	//HELPLINE COMPLAINT
 
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$username = "cyberethics";
+	$password = "5cfvtzS2mpUZrr87";
 
 
 
 	try {
-    	$conn = new PDO("mysql:host=$servername;dbname=case management platform", $username, $password);
+    	$conn = new PDO("mysql:host=$servername;dbname=cyberethics", $username, $password);
     	// set the PDO error mode to exception
     	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     	//echo "Connected successfully"; 
