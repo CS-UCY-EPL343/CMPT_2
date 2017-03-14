@@ -238,9 +238,7 @@ th {
   h3 {
     page-break-after: avoid;
   }
-  .navbar {
-    display: none;
-  }
+
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
@@ -3650,7 +3648,7 @@ tbody.collapse.in {
 .navbar-custom .navbar-collapse {
   border-color: rgba(255, 255, 255, 0.02);
 }
-.navbar-custom .navbar-toggle {
+.navbar-custom .navbar-toggle { /*Koumpi gia to menu*/
   background-color: orange;
   border-color: orange;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -3694,7 +3692,7 @@ tbody.collapse.in {
     font-weight: 600;
     font-size: 80%;
     letter-spacing:1px;
-    color:white;
+    color:darkorange;
   }
 
   .navbar-custom .navbar-brand {
@@ -3708,7 +3706,7 @@ tbody.collapse.in {
 
 @media (min-width: 800px) {
   .navbar-custom {
-    background-color:Dodgerblue;
+    background-color:white;
     padding: 10px 0;
     -webkit-transition: padding 0.5s;
     -moz-transition: padding 0.3s;
@@ -3722,58 +3720,21 @@ tbody.collapse.in {
     transition: all 0.3s;
   }
 
-  .navbar-custom.affix {
-    background-color:white;
-
-    /*padding: 1% 0;*/
-  }
   .navbar-custom .nav li a {
     font-family:Georgia;
 
     /*font-weight: 600;*/
     font-size: 100%;
     letter-spacing:1px;
-    color:white;
+    color:dodgerblue;
   }
-  .navbar-custom.affix .navbar-brand {
-    font-size: 200%;
-    color: darkorange;
-  }
-  .navbar-custom.affix .nav li a {
-    font-size: 100%;
-    color: dodgerblue;
-  }
-
-
-  /*.navbar-custom .navbar-brand {
-    color: dodgerblue;
-    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
-    font-size: 90%;
-  }*/
-
-
 
 
   .navbar-custom .navbar-nav > .active > a {
     border-radius: 8px;
   }
 }
-@media (max-width: 768px) {
-  .navbar-custom.affix {
-    background-color:white;
 
-    padding: 1% 0;
-  }
-  .navbar-custom.affix .navbar-brand {
-    font-size: 130%;
-    color: darkorange;
-  }
-  .navbar-custom.affix .navbar-nav {
-    font-size: 0.7em;
-    color: #fed136;
-  }
-
-}
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;
@@ -5558,14 +5519,6 @@ button.close {
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:before,
 .btn-group-vertical > .btn-group:after,
-.nav:before,
-.nav:after,
-.navbar:before,
-.navbar:after,
-.navbar-header:before,
-.navbar-header:after,
-.navbar-collapse:before,
-.navbar-collapse:after,
 .pager:before,
 .pager:after,
 .panel-body:before,
@@ -5585,10 +5538,6 @@ button.close {
 .form-horizontal .form-group:after,
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,
-.nav:after,
-.navbar:after,
-.navbar-header:after,
-.navbar-collapse:after,
 .pager:after,
 .panel-body:after,
 .modal-header:after,
@@ -5839,3 +5788,94 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 30%;
+}
+
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  padding-bottom: 100%;
+}
+
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  padding-bottom: 75%;
+}
+
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+}
+footer span.copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+footer ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: blue;
+}
+
+.clients {
+
+  /*background-image: url('../img/backround.jpg');*/
+  background-color: ghostwhite;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-top: 5%;
+
+
+}
+
+
+
+
+
+
+
+aside.clients img {
+  margin: 50px auto;
+}

@@ -144,8 +144,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-custom {
-  background-color: Dodgerblue;
-  border-color: transparent;S
+  background-color: #0083c7;
+  border-color: transparent;
   
 }
 .navbar-custom .navbar-brand {
@@ -237,7 +237,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media (min-width: 800px) {
   .navbar-custom {
-    background-color:Dodgerblue;
+    background-color:#0083c7;
     padding: 10px 0;
     -webkit-transition: padding 0.5s;
     -moz-transition: padding 0.3s;
@@ -270,12 +270,16 @@ fieldset[disabled] .btn-xl.active {
   }
   .navbar-custom.affix .nav li a {
     font-size: 100%;
-    color: dodgerblue;
+    color: #0083c7;
+  }
+  .navbar-custom.affix {
+    background-color:white;
+
+    padding: 1% 0;
   }
 
-
   /*.navbar-custom .navbar-brand {
-    color: dodgerblue;
+    color: #0083c7;
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
     font-size: 90%;
   }*/
@@ -795,9 +799,6 @@ padding-top: 7%;
 
 
 
-}
-
-
 
 
 
@@ -919,7 +920,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-  background-color: #blue;
+  background-color: blue;
 }
 .btn:focus,
 .btn:active,
