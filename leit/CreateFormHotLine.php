@@ -26,11 +26,11 @@
 
   <div class="container">
 
-    <form class="well form-horizontal" action="action.php" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="actionHotLine.php" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Δημιουργία Καταγγελίας HelpLine</legend>
+<legend>Δημιουργία Καταγγελίας HotLine</legend>
 
 <!-- Text input-->
 <div class="form-group"> 

@@ -1,4 +1,43 @@
+<?php
+session_start();
+
+// echo $_SESSION["complaintid"];
+ 
+$servername = "localhost";
+$username = "root";
+$password = "1234";
+$dbname = "cyberethics";
+
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+     die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT  name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details FROM hotlinecomplaint where id= $_POST[koko] ";
+$result = $conn->query($sql);
+
+
+     // output data of each row
+     $row = $result->fetch_assoc();
+         $name=  $row["name"];
+         $surname=  $row["surname"];
+         $email= $row["email"];
+         $age= $row["age"];
+         $sex= $row["sex"];
+          $WebsiteName=$row["WebsiteName"];
+          $complaintFor=$row["complaintFor"];
+$platformname=$row["platformname"];
+$typeofcomplaint=$row["typeofcomplaint"];
+$details=$row["details"];
+
+ $conn->close();
+?>
+
 <!DOCTYPE html>
+
 <html >
 <head>
   <meta charset="UTF-8">
@@ -20,7 +59,9 @@
 
 
 </style>
-<body onload="contact_form.reset();">
+
+<div id="olee"></div>
+<body >
 
 
 
@@ -30,7 +71,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Δημιουργία Καταγγελίας HelpLine</legend>
+<legend>Στοιχεία Καταγγελίας</legend>
 
 <!-- Text input-->
 <div class="form-group"> 
@@ -38,12 +79,10 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="ReportFor"  id="selectidr" class="form-control selectpicker"  onchange="myFunction()">
-      <option value="" >Επιλέξε καταγγελια για</option>
-      <option value="webpage">Ιστσελίδα</option>
-      <option value="chatRoom">Εφαρμογή διαδικτυακής επικοινωνίας</option>
+    <input name="state"  id="selectidr" class="form-control selectpicker" value=" <?php echo htmlspecialchars($complaintFor); ?>"  readonly rows="1"  ">
      
-    </select>
+     
+    </input>
   </div>
 </div>
 </div>
@@ -56,10 +95,8 @@
    <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="website" id="urll" placeholder="Διεύθυνση ιστοσελίδας(URL)"  required="" autocomplete=off class="form-control" type="Text " disabled="disabled">
-  <!-- <script type="text/javascript">
-    document.getElementById("urll").disabled = true
-  </script> -->
+  <input name="website" id="urll"   required="" autocomplete=off class="form-control" type="Text " value=" <?php echo htmlspecialchars($WebsiteName); ?>" disabled >
+ 
     </div>
   </div>
 </div>
@@ -72,7 +109,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-          <textarea class="form-control"  id="VoIP" name="platname"   placeholder="Όνομα Εφαρμογής"  disabled="disabled"></textarea>
+          <input class="form-control"  id="VoIP" value=" <?php echo htmlspecialchars($platformname); ?>" name="platname"    disabled="disabled"></input>
   </div>
   </div>
 </div>
@@ -85,20 +122,20 @@ idos kataggelias-->
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="ReportType" class="form-control selectpicker" >
-      <option value="" >Είδος Καταγγελίας</option>
-      <option value="ChildPornography">Παιδική Πορνογραφία</option>
-      <option value="Racism">Ρατσισμός/Ξενοφοβία</option>
-      <option value="CopyrightInfrigment">Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)</option>
-      <option value="Hacking">Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)</option>
-      <option value="Bullying">Διαδικτυακός Εκφοβισμός</option>
-      <option value="SexualHarassment">Σεξουαλική Παρενόχληση</option>
-      <option value="InternetAddiction">Εθισμός Στο Διαδίκτυο</option>
-      <option value="Grooming">Ηλεκτρονική Αποπλάνηση(Grooming)</option>
-      <option value="Spam"> Ανεπιθύμητη Αλληλογραφία</option>
-      <option value="Phishing">Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)</option>
-     
-    </select>
+    <input name="state" class="form-control selectpicker" value=" <?php echo htmlspecialchars($typeofcomplaint); ?>"  disabled>
+     <!--  <option value=" " >Είδος Καταγγελίας</option>
+      <option>Παιδική Πορνογραφία</option>
+      <option>Ρατσισμός/Ξενοφοβία</option>
+      <option>Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)</option>
+      <option>Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)</option>
+      <option>Διαδικτυακός Εκφοβισμός</option>
+      <option>Σεξουαλική Παρενόχληση</option>
+      <option>Εθισμός Στο Διαδίκτυο</option>
+      <option>Ηλεκτρονική Αποπλάνηση(Grooming)</option>
+      <option> Ανεπιθύμητη Αλληλογραφία</option>
+      <option>Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)</option>
+      -->
+    </input>
   </div>
 </div>
 </div>
@@ -112,7 +149,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-          <textarea class="form-control" name="comment"  placeholder="Λεπτομέρειες"></textarea>
+          <textarea class="form-control" name="comment"     rows="4" disabled="" > <?php echo htmlspecialchars($details); ?></textarea>
   </div>
   </div>
 </div>
@@ -124,7 +161,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer"> 
     <div class="input-group">  
        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span> 
-  <input name="email" id="aelara" placeholder="E-Mail Address" autocomplete=off class="form-control"  type="text">
+  <input name="email" id="aelara" value=" <?php echo htmlspecialchars($email); ?>"  autocomplete=off class="form-control"  type="text" disabled>
     </div> 
   </div>
 </div>
@@ -136,7 +173,7 @@ idos kataggelias-->
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="Ονομα" autocomplete=off class="form-control"  type="text">
+  <input  name="first_name" value=" <?php echo htmlspecialchars($name); ?>"  autocomplete=off class="form-control"  disabled>
     </div>
   </div>
 </div>
@@ -148,7 +185,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Επιθετο" autocomplete=off class="form-control"  type="text">
+  <input name="last_name" autocomplete=off class="form-control"  type="" disabled  value=" <?php echo htmlspecialchars($surname); ?>" >
     </div>
   </div>
 </div>
@@ -159,7 +196,7 @@ idos kataggelias-->
   <label class = "col-md-4 control-label" for="Date">Ημερ. Γέννησης</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
-    <input name ="date" type="Date" class="form-control input-md" id="date">
+    <input name ="date" value=" <?php echo htmlspecialchars($age); ?>"  class="form-control input-md" id="date" disabled>
     </div>
   </div>
 </div>
@@ -167,16 +204,12 @@ idos kataggelias-->
 <div class="form-group">
                         <label class="col-md-4 control-label">Φύλο</label>
                         <div class="col-md-4">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="hosting" value="m" /> Άρρεν
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="hosting" value="f" /> Θύλη
-                                </label>
-                            </div>
+                           
+                                
+                                    <input  name="hosting" value=" <?php echo htmlspecialchars($sex); ?>"  disabled  class="form-control input-md" ></input> 
+                               
+                            
+                           
                         </div>
                     </div>
 
@@ -186,12 +219,12 @@ idos kataggelias-->
 <!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Η καταγγελία καταχωρήθηκε</div>
  -->
 <!-- Button -->
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
     <button type="submit"  class="btn btn-warning"  >Υποβολή<span class="glyphicon glyphicon-send"></span></button>
   </div>
-</div>
+</div> -->
 <p id="demo"></p>
 
 
@@ -201,64 +234,30 @@ idos kataggelias-->
 </div>
 
 
-<!-- <script>
-    function myNewFunction(sel)
-    {
+<!-- <?php
 
+    // echo ("<SCRIPT LANGUAGE='JavaScript'>
+    //         document.getElementById('VoIP').value =  'NIAOUUUopsdfdsfsf' ;
+    //         </SCRIPT>");
 
-      if ( sel.options[sel.selectidr].value == "val1" ){
-        document.getElementById("urll").disabled = true
-
-      }
-//         if(document.getElementById('selectid').value == "val1") {
-//      //Do something
-//      document.getElementById("urll").disabled = true
-// }
-    }
-</script>
- -->
+   
+   //document.getElementById("olee").innerHTML = oio;
+?> -->
 
 
 
 
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 
-    <script src="js/index.js"></script>
-    <script type="text/javascript">
-  
-  
-
-
-
- function myFunction() {
-    var x = document.getElementById("selectidr").value;
-
-    if (x=="webpage"){
-     document.getElementById("VoIP").disabled = true;
-     document.getElementById("urll").disabled = false;
-      document.getElementById("VoIP").value = "";
-
-      
-
-
-}else if(x=="chatRoom") {
-       document.getElementById("urll").disabled = true;
-       document.getElementById("VoIP").disabled = false;
-       document.getElementById("urll").value = "";
- }
-else{
-
- document.getElementById("urll").disabled = true;
- document.getElementById("VoIP").disabled = true;
-  document.getElementById("urll").value = "";
-    document.getElementById("VoIP").value = "";
-    
-}
-}
-</script>
+    <script src="js/index.js"></script> -->
+   
     </div><!-- /.container -->
   
 </body>
+
+
 </html>

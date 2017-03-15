@@ -71,17 +71,18 @@
             //         }
             //     }
             // },
-            // city: {
-            //     validators: {
-            //          stringLength: {
-            //             min: 4,
-            //         },
-            //         notEmpty: {
-            //             message: 'Please supply your city'
-            //         }
-            //     }
-            // },
-            state: {
+            platname: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                        message: 'Το όνομα δεν είναι έγκυρο(πολύ μικρό)'
+                    },
+                    notEmpty: {
+                        message: 'Παρακαλώ δώστε το όνομα της εφαρμογής'
+                    }
+                }
+            },
+            ReportFor: {
                 validators: {
                     notEmpty: {
                         message: 'Παρακαλώ επιλέξτε καταγγελια'
