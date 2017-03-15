@@ -1,10 +1,14 @@
+<?php
+session_start();
+?>
+
 
 <?php
     //open connection to mysql db
     $connection = mysqli_connect('localhost','root','1234','cyberethics') or die("Error " . mysqli_error($connection));
 
     //fetch table rows from mysql db
-    $sql = "select ID, DateTime from helplinecomplaint";
+    $sql = "select *  WHERE ID=$from helplinecomplaint";
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
 echo "testarisma".($SESSION["var"]) ;
     //create an array

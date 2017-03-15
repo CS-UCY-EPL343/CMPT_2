@@ -4,7 +4,7 @@
     $connection = mysqli_connect('localhost','root','1234','cyberethics') or die("Error " . mysqli_error($connection));
 
     //fetch table rows from mysql db
-    $sql = "select ID, DateTime from helplinecomplaint";
+    $sql = "select ID, DateTime from hotlinecomplaint";
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
 echo "testarisma".($SESSION["var"]) ;
     //create an array
@@ -15,7 +15,7 @@ echo "testarisma".($SESSION["var"]) ;
     }
     //echo json_encode($emparray);
 //write to json file
-    $fp = fopen('empdata.json', 'w');
+    $fp = fopen('empdatahotline.json', 'w');
     fwrite($fp, json_encode($emparray));
     fclose($fp);
     //close the db connection

@@ -57,7 +57,7 @@
 
      
 	//Prepare sql Statement
- 	$sql = "INSERT INTO HelplineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,'$age','$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
+ 	$sql = "INSERT INTO HotLineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,'$age','$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
     $statement = $conn->prepare($sql);
    
 	//Execute SQL statement

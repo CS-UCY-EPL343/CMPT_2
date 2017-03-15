@@ -56,7 +56,7 @@ window.setInterval(createjson, 1000);
         }
 
 
-        xmlhttp.open("GET","createjson.php",true);
+        xmlhttp.open("GET","createjsonHotLine.php",true);
         xmlhttp.send();
     }
 
@@ -97,7 +97,7 @@ window.setInterval(createjson, 1000);
 <header class="header-user-dropdown">
 
     <div class="header-limiter">
-        <h1>Λειτουργός Helpline</h1>
+        <h1>Λειτουργός HotLine</h1>
 
         <nav>
             <a href="#" >View Complaints</a>
@@ -109,12 +109,12 @@ window.setInterval(createjson, 1000);
 
 
         <div class="header-user-menu">
-            <img src="person.png" alt="User Image"/>
+            <img src="person.jpg" alt="User Image"/>
 
             <ul>
                 <li><a href="#">Settings</a></li>
-                <li><a href="index - Copy.html">Create Form</a></li>
-                <li><a href="logoutses.php" class="highlight">Logout</a></li>
+                <li><a href="CreateFormHotLine.php">Create Form</a></li>
+                <li><a href="http://localhost/login/index.html" class="highlight">Logout</a></li>
             </ul>
         </div>
 
@@ -151,7 +151,7 @@ function post(test) {
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
     form.setAttribute("method", method);
-    form.setAttribute("action", "showHLDetails.php");
+    form.setAttribute("action", "showHotLineDetails.php");
 
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
@@ -167,7 +167,7 @@ function post(test) {
 
      function showjson(){
     $(document).ready(function () {
-        $.getJSON("empdata.json", function (data) {
+        $.getJSON("empdatahotline.json", function (data) {
 
             var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
             $.each(data, function (index, value) {
