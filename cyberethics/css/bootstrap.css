@@ -5577,9 +5577,6 @@ button.close {
 .affix {
   position: fixed;
 }
-@-ms-viewport {
-  width: device-width;
-}
 .visible-xs,
 .visible-sm,
 .visible-md,
@@ -5870,12 +5867,13 @@ ul.social-buttons li a:active {
 
 }
 
-
-
-
-
-
-
 aside.clients img {
   margin: 50px auto;
+}
+
+.my_hide{
+  opacity:0;
+}
+.visible{
+  opacity:1;
 }
