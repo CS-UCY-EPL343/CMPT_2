@@ -190,7 +190,7 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
-  background-color: lightslategray;
+  background-color: orange;
 }
 .navbar-custom .nav li a {
   font-family:Georgia;
@@ -232,6 +232,14 @@ fieldset[disabled] .btn-xl.active {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
   }
+
+  .navbar-collapse .lang{
+    position: relative;
+    left:10%;
+
+  }
+
+
 
 }
 
