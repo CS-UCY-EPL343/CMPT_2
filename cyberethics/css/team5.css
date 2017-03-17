@@ -809,11 +809,14 @@ padding-top: 7%;
 
 
 
-
-
-aside.clients img {
-  margin: 50px auto;
+div.sliderlo > div>img{
+  padding-right: 10%;
 }
+
+
+
+
+
 section#contact {
   background-color: ghostwhite;
 /*background-image: url('../img/backround.jpg');*/
