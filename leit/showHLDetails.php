@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 } 
 
 $sql = "SELECT  name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details FROM helplinecomplaint where id= $_POST[koko] ";
+$_SESSION["helpdel"]= $_POST['koko'];
 $result = $conn->query($sql);
 
 
@@ -78,6 +79,11 @@ $details=$row["details"];
   opacity: 1;
   right: 0;
 }
+
+.button:hover {
+  color: black ;
+
+}
 </style>
   <meta charset="UTF-8">
   <title>Καταγγελία</title>
@@ -106,7 +112,7 @@ $details=$row["details"];
 
   <div class="container">
 
-    <form class="well form-horizontal" action="action.php" method="post"  id="contact_form">
+    <form class="well form-horizontal" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
@@ -117,11 +123,13 @@ $details=$row["details"];
   <label class="col-md-4 control-label">Καταγγελία για</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <input name="state"  id="selectidr" class="form-control selectpicker" value=" <?php echo htmlspecialchars($complaintFor); ?>"  readonly rows="1"  ">
+        <span  class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+     <select disabled name="ReportFor"  id="selectidr" class="form-control selectpicker"  onchange="myFunction()">
+      <option  value="<?php echo htmlspecialchars($complaintFor); ?>"" ><?php echo htmlspecialchars($complaintFor); ?></option>
+      <option value="webpage">Ιστσελίδα</option>
+      <option value="chatRoom">Εφαρμογή διαδικτυακής επικοινωνίας</option>
      
-     
-    </input>
+    </select>
   </div>
 </div>
 </div>
@@ -161,7 +169,7 @@ idos kataggelias-->
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <input name="state" class="form-control selectpicker" value=" <?php echo htmlspecialchars($typeofcomplaint); ?>"  disabled>
+    <input name="state" class="form-control selectpicker"   id="type" value=" <?php echo htmlspecialchars($typeofcomplaint); ?>"  disabled>
      <!--  <option value=" " >Είδος Καταγγελίας</option>
       <option>Παιδική Πορνογραφία</option>
       <option>Ρατσισμός/Ξενοφοβία</option>
@@ -188,7 +196,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-          <textarea class="form-control" name="comment"     rows="4" disabled="" > <?php echo htmlspecialchars($details); ?></textarea>
+          <textarea class="form-control" name="comment"  id="det"   rows="4" disabled="" > <?php echo htmlspecialchars($details); ?></textarea>
   </div>
   </div>
 </div>
@@ -200,7 +208,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer"> 
     <div class="input-group">  
        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span> 
-  <input name="email" id="aelara" value=" <?php echo htmlspecialchars($email); ?>"  autocomplete=off class="form-control"  type="text" disabled>
+  <input name="email" id="mail" value=" <?php echo htmlspecialchars($email); ?>"  autocomplete=off class="form-control"  type="text" disabled>
     </div> 
   </div>
 </div>
@@ -212,7 +220,7 @@ idos kataggelias-->
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" value=" <?php echo htmlspecialchars($name); ?>"  autocomplete=off class="form-control"  disabled>
+  <input  name="first_name" id="name" value=" <?php echo htmlspecialchars($name); ?>"  autocomplete=off class="form-control"  disabled>
     </div>
   </div>
 </div>
@@ -224,7 +232,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" autocomplete=off class="form-control"  type="" disabled  value=" <?php echo htmlspecialchars($surname); ?>" >
+  <input name="last_name" id="surname" autocomplete=off class="form-control"  type="" disabled  value=" <?php echo htmlspecialchars($surname); ?>" >
     </div>
   </div>
 </div>
@@ -235,7 +243,7 @@ idos kataggelias-->
   <label class = "col-md-4 control-label" for="Date">Ημερ. Γέννησης</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
-    <input name ="date" value=" <?php echo htmlspecialchars($age); ?>"  class="form-control input-md" id="date" disabled>
+    <input name ="date" value=" <?php echo htmlspecialchars($age); ?>"  class="form-control input-md" id="date" disabled >
     </div>
   </div>
 </div>
@@ -245,21 +253,14 @@ idos kataggelias-->
                         <div class="col-md-4">
                            
                                 
-                                    <input  name="hosting" value=" <?php echo htmlspecialchars($sex); ?>"  disabled  class="form-control input-md" ></input> 
+                                    <input  name="hosting" value=" <?php echo htmlspecialchars($sex); ?>" id="gender" disabled  class="form-control input-md" ></input> 
                                
                             
                         </div>
 
 
                     </div>
-                        <div>
-                              <button class="button" style="background-color: #595352; width: 12%;"><span>Back</span></button>
-                              <button class="button" style="background-color: #890916; width: 13%;"><span>Delete</span></button>
-                              <button class="button" style="background-color: #f2e20c; width: 12%;"><span>Edit</span></button>
-                              <button class="button" style="background-color: #db8008; width: 20%;"><span>Send to Hotline</span></button>
-                              <button class="button" style="background-color: #0f0e59; width: 18%;"><span>Send to police</span></button>
-
-                        </div>
+                        
 
 
 <!-- Success message -->
@@ -278,6 +279,17 @@ idos kataggelias-->
 
 </fieldset>
 </form>
+<div>
+
+
+                              <a href="/leit/desp.php" class="button" style="background-color: #595352; width: 12%;"><span>Back</span></a>
+                              <a  href="/leit/deleteHelpLine.php" class="button" style="background-color: #890916; width: 13%;"><span>Delete</span></a>
+                              <button onclick="funcEdit()" class="button" style="background-color: #f2e20c; width: 12%;"><span>Edit</span></button>
+                              <button disabled class="button" style="background-color: #26a313; width: 12%;"><span>Save</span></button>
+                              <a href="/leit/moveToHotLine.php" class="button" style="background-color: #db8008; width: 20%;"><span>Send to Hotline</span></a>
+                              <button class="button" style="background-color: #0f0e59; width: 18%;"><span>Send to police</span></button>
+
+                        </div>
 </div>
 
 
@@ -303,7 +315,33 @@ idos kataggelias-->
     <script src="js/index.js"></script> -->
    
     </div><!-- /.container -->
+    
+
+
+
+<script type="text/javascript">
   
+
+  function funcEdit(){
+//alert('Complaint Submitted Succesfully');
+document.getElementById("selectidr").disabled=false;
+document.getElementById("urll").disabled=false;
+document.getElementById("VoIP").disabled=false;
+document.getElementById("type").disabled=false;
+document.getElementById("det").disabled=false;
+document.getElementById("mail").disabled=false;
+document.getElementById("name").disabled=false;
+document.getElementById("surname").disabled=false;
+document.getElementById("date").disabled=false;
+document.getElementById("gender").disabled=false;
+
+
+  } 
+
+
+
+</script>
+
 </body>
 
 
