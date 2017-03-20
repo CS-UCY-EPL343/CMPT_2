@@ -23,19 +23,21 @@
     	echo "Connection failed: " . $e->getMessage();
     }
 
+//ga ellinika
+$conn->exec("set names utf8");
 
 
 	if(empty($_POST['email']))
-		$email = 'N/A';
+		$email = '';
 	else  
 		$email = $_POST['email'];
 	if(empty($_POST['first_name']))
-		$name = "N/A";
+		$name = "";
 	else
 		$name = $_POST['first_name'];
 					
 	if(empty($_POST['last_name']))
-		$surname =  "N/A";
+		$surname =  "";
 	else
 		$surname = $_POST['last_name'];
 					  
@@ -51,8 +53,8 @@
      // echo$to;
      
 	$var = isset($_POST['hosting'])? $_POST['hosting']:'' ; //echo $var; //Gender
-	$var1 = isset($_POST['website'])? $_POST['website']: "N/A";//URL
-	$var2 = isset($_POST['platname']) ? $_POST['platname']: 'N/A';//Platform Name
+	$var1 = isset($_POST['website'])? $_POST['website']: "";//URL
+	$var2 = isset($_POST['platname']) ? $_POST['platname']: '';//Platform Name
 	$var3 = empty($_POST['comment'])? 'N/A': $_POST['comment'];//Details
 
      

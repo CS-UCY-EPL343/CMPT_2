@@ -40,8 +40,8 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="ReportFor"  id="selectidr" class="form-control selectpicker"  onchange="myFunction()">
       <option value="" >Επιλέξε καταγγελια για</option>
-      <option value="webpage">Ιστσελίδα</option>
-      <option value="chatRoom">Εφαρμογή διαδικτυακής επικοινωνίας</option>
+      <option value="Ιστσελίδα">Ιστσελίδα</option>
+      <option value="Εφαρμογή διαδικτυακής επικοινωνίας">Εφαρμογή διαδικτυακής επικοινωνίας</option>
      
     </select>
   </div>
@@ -87,16 +87,16 @@ idos kataggelias-->
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="ReportType" class="form-control selectpicker" >
       <option value="" >Είδος Καταγγελίας</option>
-      <option value="ChildPornography">Παιδική Πορνογραφία</option>
-      <option value="Racism">Ρατσισμός/Ξενοφοβία</option>
-      <option value="CopyrightInfrigment">Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)</option>
-      <option value="Hacking">Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)</option>
-      <option value="Bullying">Διαδικτυακός Εκφοβισμός</option>
-      <option value="SexualHarassment">Σεξουαλική Παρενόχληση</option>
-      <option value="InternetAddiction">Εθισμός Στο Διαδίκτυο</option>
-      <option value="Grooming">Ηλεκτρονική Αποπλάνηση(Grooming)</option>
-      <option value="Spam"> Ανεπιθύμητη Αλληλογραφία</option>
-      <option value="Phishing">Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)</option>
+      <option value="Παιδική Πορνογραφία">Παιδική Πορνογραφία</option>
+      <option value="Ρατσισμός/Ξενοφοβία">Ρατσισμός/Ξενοφοβία</option>
+      <option value="Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)">Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)</option>
+      <option value="Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)">Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)</option>
+      <option value="Διαδικτυακός Εκφοβισμός">Διαδικτυακός Εκφοβισμός</option>
+      <option value="Σεξουαλική Παρενόχληση">Σεξουαλική Παρενόχληση</option>
+      <option value="Εθισμός Στο Διαδίκτυο">Εθισμός Στο Διαδίκτυο</option>
+      <option value="Ηλεκτρονική Αποπλάνηση(Grooming)">Ηλεκτρονική Αποπλάνηση(Grooming)</option>
+      <option value="Ανεπιθύμητη Αλληλογραφία">Ανεπιθύμητη Αλληλογραφία</option>
+      <option value="Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)">Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)</option>
      
     </select>
   </div>
@@ -169,12 +169,12 @@ idos kataggelias-->
                         <div class="col-md-4">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="hosting" value="m" /> Άρρεν
+                                    <input type="radio" name="hosting" value="Α" /> Άρρεν
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="hosting" value="f" /> Θύλη
+                                    <input type="radio" name="hosting" value="Γ" /> Θύλη
                                 </label>
                             </div>
                         </div>
@@ -235,7 +235,7 @@ idos kataggelias-->
  function myFunction() {
     var x = document.getElementById("selectidr").value;
 
-    if (x=="webpage"){
+    if (x=="Ιστσελίδα"){
      document.getElementById("VoIP").disabled = true;
      document.getElementById("urll").disabled = false;
       document.getElementById("VoIP").value = "";
@@ -243,7 +243,7 @@ idos kataggelias-->
       
 
 
-}else if(x=="chatRoom") {
+}else if(x=="Εφαρμογή διαδικτυακής επικοινωνίας") {
        document.getElementById("urll").disabled = true;
        document.getElementById("VoIP").disabled = false;
        document.getElementById("urll").value = "";
