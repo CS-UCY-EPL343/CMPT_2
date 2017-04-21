@@ -1,0 +1,78 @@
+<ion-view title="Hotline" id="page2">
+  <ion-content padding="true" class="has-header">
+    <h1 id="hotline-heading3" style="color:#000000;text-align:center;">Hotline Report</h1>
+    <div>
+      <p id="hinfo">
+        For more information about what is a hotline report please visit the
+        <a ui-sref="menu.aboutUs">About </a>section
+      </p>
+
+      <style type="text/css">
+        #hinfo {
+            text-align: center;
+        }
+      </style>
+
+
+    </div>
+    <form id="hotline-form1" class="list" ng-submit="submit()">
+      <div id="hotline-markdown6" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#000000;">Report Information (obligatory)</p>
+      </div>
+      <label class="item item-select" id="hotline-select1" name="ReportFor">
+        <span class="input-label">Report For *</span>
+        <select ng-model="data.ReportFor">
+          <option>Website</option>
+          <option>Online Communications Platform</option>
+        </select>
+      </label>
+      <label class="item item-input item-stacked-label" id="hotline-input3" name="url">
+        <span class="input-label">Website or Platform Name *</span>
+        <input type="text" placeholder="http://www.example.com/1234 or platform name" name="url" ng-model="data.url" maxlength="250">
+      </label>
+      <label class="item item-select" id="hotline-select2" name="TypeOfReport">
+        <span class="input-label">Activity *</span>
+        <select ng-model="data.activity" name="activity">
+          <option selected="true">Child Pornography</option>
+          <option>Racicm / Xenophobia</option>
+          <option>Hacking</option>
+        </select>
+      </label>
+      <label class="item item-input item-stacked-label" id="hotline-input4" name="Details">
+        <span class="input-label">Details</span>
+        <input type="text" placeholder="" name="details" ng-model="data.details" maxlength="1000">
+      </label>
+      <div class="spacer" style="width: 287px; height: 8px;"></div>
+      <div id="hotline-markdown7" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#000000;">Personal Information (optional)</p>
+      </div>
+      <label class="item item-input item-stacked-label" id="hotline-input5" name="email">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="example@domain.com" name="email" ng-model="data.email" maxlength="250">
+      </label>
+      <label class="item item-input item-stacked-label" id="hotline-input6">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="John" name="name" ng-model="data.name" maxlength="25">
+      </label>
+      <label class="item item-input item-stacked-label" id="hotline-input7" name="surname">
+        <span class="input-label">Surname</span>
+        <input type="text" placeholder="Smith" name="surname" maxlength="25" ng-model="data.surname">
+      </label>
+      <label class="item item-input" id="hotline-input8" name="date">
+        <span class="input-label">Date of Birth</span>
+        <input type="date" placeholder="" name="DOB" ng-model="data.DOB">
+      </label>
+       <label class="item item-select" id="hotline-select3" name="Gender">
+        <span class="input-label">Sex</span>
+        <select ng-model="data.sex" name="sex">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </label>
+
+      <button id="hotline-button7" class="button button-positive  button-block" type="submit" value="submit">Submit</button>
+    </form>
+    <button id="hotline-button8" class="button button-positive  button-block" ng-click="clear()" style="margin-top: -20px;">Clear</button>
+
+  </ion-content>
+</ion-view>
