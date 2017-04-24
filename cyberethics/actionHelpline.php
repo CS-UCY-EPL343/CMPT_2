@@ -8,7 +8,6 @@
 	$username = "cyberethics";
 	$password = "5cfvtzS2mpUZrr87";
 
-	error_reporting(0);
 
 
 	try {
@@ -73,7 +72,7 @@
     	':var3' => $var3
     ));
 
-    if($query){ echo "<script type='text/javascript'>alert('Complaint Submitted Succesfully');history.go(-1);</script>";}
+    echo "<script type='text/javascript'>alert('Complaint Submitted Succesfully');history.go(-1);</script>";
 
  ?>
 
