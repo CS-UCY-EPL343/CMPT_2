@@ -15,10 +15,11 @@ session_start();
 		
 
 		try {
-	    	$conn = new PDO("mysql:host=$servername;dbname=cyberethics", "root", "1234");
+	    	$conn = new PDO("mysql:host=$servername;dbname=cyberethics", "root", "1234", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
 	    	// set the PDO error mode to exception
 	    	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	    	//echo "Connected successfully"; 
+       
 	    }
 		catch(PDOException $e)
 	    {
@@ -35,7 +36,7 @@ session_start();
 			//echo '</script>';
 			
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('ERROR: The username field is empty! Try again')
+            window.alert('ΣΦΑΛΜΑ: Το παιδιο \"ΟΝΟΜΑ ΧΡΗΣΤΗ\"  είναι άδειο! Δοκίμασε ξανά.')
             window.location.href='http://localhost/login/index.html';
             </SCRIPT>");
 
@@ -48,7 +49,7 @@ session_start();
             
 			
 						echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('ERROR: The Password field is empty! Try again')
+            window.alert('ΣΦΑΛΜΑ: Το παιδιο \"ΚΩΔΙΚΟΣ\"  είναι άδειο! Δοκίμασε ξανά.')
             window.location.href='http://localhost/login/index.html';
             </SCRIPT>");
 		}
@@ -122,12 +123,45 @@ $sth = $conn->query($sqll);
 
 
     				 }
+             else if( $row['role']=='g'){
+
+                       echo ("<SCRIPT LANGUAGE='JavaScript'>
+            
+             window.location.href='http://localhost/leit/operatorHome.php';
+            </SCRIPT>");
+
+
+    				 }
+             else if( $row['role']=='e'){
+
+                       echo ("<SCRIPT LANGUAGE='JavaScript'>
+            
+             window.location.href='http://localhost/leit/statisticop.php';
+            </SCRIPT>");
+
+
+             }
+            else {
+
+                       echo ("<SCRIPT LANGUAGE='JavaScript'>
+            
+             window.location.href='http://localhost/leit/despOperators.php';
+            </SCRIPT>");
+
+
+                     }
+
+
     					$_SESSION["user"]= $username;
+
+                        $_SESSION["role"]= $row['role'];
+
+
     		//echo "you have logged in";
     	}	
     	else{
     		echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('ERROR: Wrong Username or Password!  Try again')
+            window.alert('ΣΦΑΛΜΑ: Λάθος ΟΝΟΜΑ ΧΡΗΣΤΗ ή ΚΩΔΙΚΟΣ! Δοκίμασε ξανά.')
             window.location.href='http://localhost/login/index.html';
             </SCRIPT>");
  
