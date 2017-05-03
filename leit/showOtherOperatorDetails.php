@@ -1,15 +1,8 @@
-
-
-
 <?php
 session_start();
 //echo $_SESSION["user"];
-if (isset($_SESSION['user']) and strcmp("t",$_SESSION['role'])==0) {
 
-
-
-// echo $_SESSION["complaintid"];
- 
+if (isset($_SESSION['user']) and strcmp("p",$_SESSION['role'])!=0  and strcmp("t",$_SESSION['role'])!=0 and strcmp("g",$_SESSION['role'])!=0 and strcmp("e",$_SESSION['role'])!=0) {
 
 if(!isset($_POST['koko'])){
    echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -18,12 +11,12 @@ if(!isset($_POST['koko'])){
             </SCRIPT>");
 }
 
-
+// echo $_SESSION["complaintid"];
+ 
 $servername = "localhost";
 $username = "root";
 $password = "1234";
 $dbname = "cyberethics";
-
 
 
 // Create connection
@@ -33,7 +26,7 @@ if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
 mysqli_set_charset($conn, "utf8");
-$sql = "SELECT  DateTime, name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,sentfrom FROM hotlinecomplaint where id= $_POST[koko] ";
+$sql = "SELECT  DateTime, name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,actionstaken FROM otheroperatorcomplaint where id= $_POST[koko] ";
 $result = $conn->query($sql);
 $_SESSION["helpdel"]= $_POST['koko'];
 
@@ -45,7 +38,7 @@ $_SESSION["helpdel"]= $_POST['koko'];
          $email= $row["email"];
          $age= $row["age"];
          if ($age==0){
-          $age=0;
+          $age="";
          }
          $sex= $row["sex"];
           $WebsiteName=$row["WebsiteName"];
@@ -53,7 +46,7 @@ $_SESSION["helpdel"]= $_POST['koko'];
 $platformname=$row["platformname"];
 $typeofcomplaint=$row["typeofcomplaint"];
 $details=$row["details"];
-$sentfrom=$row["sentfrom"];
+$action=$row["actionstaken"];
 
 
 $id=$_POST['koko'];
@@ -70,7 +63,6 @@ $_SESSION["typeofcomplaint"]= $typeofcomplaint;
 $_SESSION["details"]= $details;
  $_SESSION["id"]= $id;
  $_SESSION["datetime"]= $datetime;
- $_SESSION["sentfrom"]= $sentfrom;
 
  $conn->close();
 
@@ -90,7 +82,12 @@ $_SESSION["details"]= $details;
   <title>Καταγγελία</title>
   <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 
+ <link rel="stylesheet" href="css/style.css">
+       <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
@@ -168,7 +165,7 @@ $_SESSION["details"]= $details;
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <input name="state"  id="selectidr" class="form-control selectpicker" value="<?php echo htmlspecialchars($complaintFor); ?>"  readonly rows="1"  ">
+    <input name="state"  id="selectidr" class="form-control selectpicker" value=" <?php echo htmlspecialchars($complaintFor); ?>"  readonly rows="1"  ">
      
      
     </input>
@@ -184,7 +181,7 @@ $_SESSION["details"]= $details;
    <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="website" id="urll"   required="" autocomplete=off class="form-control" type="Text " value="<?php echo htmlspecialchars($WebsiteName); ?>" disabled >
+  <input name="website" id="urll"   required="" autocomplete=off class="form-control" type="Text " value=" <?php echo htmlspecialchars($WebsiteName); ?>" disabled >
  
     </div>
   </div>
@@ -198,7 +195,7 @@ $_SESSION["details"]= $details;
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-          <input class="form-control"  id="VoIP" value="<?php echo htmlspecialchars($platformname); ?>" name="platname"    disabled="disabled"></input>
+          <input class="form-control"  id="VoIP" value=" <?php echo htmlspecialchars($platformname); ?>" name="platname"    disabled="disabled"></input>
   </div>
   </div>
 </div>
@@ -211,7 +208,7 @@ idos kataggelias-->
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <input name="state" class="form-control selectpicker" value="<?php echo htmlspecialchars($typeofcomplaint); ?>"  disabled>
+    <input name="state" class="form-control selectpicker" value=" <?php echo htmlspecialchars($typeofcomplaint); ?>"  disabled>
      <!--  <option value=" " >Είδος Καταγγελίας</option>
       <option>Παιδική Πορνογραφία</option>
       <option>Ρατσισμός/Ξενοφοβία</option>
@@ -250,7 +247,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer"> 
     <div class="input-group">  
        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span> 
-  <input name="email" id="aelara" value="<?php echo htmlspecialchars($email); ?>"  autocomplete=off class="form-control"  type="text" disabled>
+  <input name="email" id="aelara" value=" <?php echo htmlspecialchars($email); ?>"  autocomplete=off class="form-control"  type="text" disabled>
     </div> 
   </div>
 </div>
@@ -262,7 +259,7 @@ idos kataggelias-->
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" value="<?php echo htmlspecialchars($name); ?>"  autocomplete=off class="form-control"  disabled>
+  <input  name="first_name" value=" <?php echo htmlspecialchars($name); ?>"  autocomplete=off class="form-control"  disabled>
     </div>
   </div>
 </div>
@@ -274,7 +271,7 @@ idos kataggelias-->
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" autocomplete=off class="form-control"  type="" disabled  value="<?php echo htmlspecialchars($surname); ?>" >
+  <input name="last_name" autocomplete=off class="form-control"  type="" disabled  value=" <?php echo htmlspecialchars($surname); ?>" >
     </div>
   </div>
 </div>
@@ -285,7 +282,7 @@ idos kataggelias-->
   <label class = "col-md-4 control-label" for="Date">Ετών</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
-    <input name ="date" value="<?php echo htmlspecialchars($age); ?>"  class="form-control input-md" id="date" disabled>
+    <input name ="date" value=" <?php echo htmlspecialchars($age); ?>"  class="form-control input-md" id="date" disabled>
     </div>
   </div>
 </div>
@@ -295,7 +292,7 @@ idos kataggelias-->
                         <div class="col-md-4">
                            
                                 
-                                    <input  name="hosting" value="<?php echo htmlspecialchars($sex); ?>"  disabled  class="form-control input-md" ></input> 
+                                    <input  name="hosting" value=" <?php echo htmlspecialchars($sex); ?>"  disabled  class="form-control input-md" ></input> 
                                
                             
                            
@@ -304,6 +301,16 @@ idos kataggelias-->
 
 
 
+ <div class="form-group">
+  <label class="col-md-4 control-label">Ενέργειες</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+          <textarea class="form-control" name="comment"  id="det"   rows="4" disabled="" ><?php echo htmlspecialchars($action); ?></textarea>
+  </div>
+  </div>
+</div>
+      
 <!-- Success message -->
 <!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Η καταγγελία καταχωρήθηκε</div>
  -->
@@ -316,17 +323,41 @@ idos kataggelias-->
 </div> -->
 <p id="demo"></p>
 
-<a href="/leit/despHotLine.php" class="button"  style="background-color: #595352; width: 12%;" id="back"><span id="backk">Πίσω</span></a>
-                              <a    href="/leit/deleteHotLine.php"  onclick="return confirm('Είστε σίγουρος;')" class="button" style="background-color: #890916; width: 13%;" id="delete"><span id="deletee">Διαγραφή</span></a>
+<a href="/leit/despOperators.php" class="button"  style="background-color: #595352; width: 12%;" id="back"><span id="backk">Back</span></a>
+                              <button id="modal" hidden="" type="button" class="button" data-toggle="modal"  style="background-color: #4a4ea8; width: 19%;" data-target="#myModal" >Προσθήκη Ενέργειας</button>
+                               <button id="sendd" style="background-color: #47d138; " class="button" type="button" onclick="actions()" >Αποστολή Πίσω</button>
+                              <!-- <a    href="/leit/deleteHotLine.php"  onclick="return confirm('Are you sure?')" class="button" style="background-color: #890916; width: 13%;" id="delete"><span id="deletee">Delete</span></a> -->
                               <!-- <button id="edit" type="Button" onclick="funcEdit()"  class="button" style="background-color: #f2e20c; width: 12%;"><span  id="eedit">Edit</span></button>
                               <button id="save" disabled type="submit"  style=" border-radius: 5px; background-color: #dddddd; width: 12%; height: 56px;  cursor: not-allowed;"><span id="savee" style="cursor: not-allowed;">Save</span></button> -->
-                              <a id="sendH"  href="/leit/moveToHelpLine.php" onclick="return confirm('Είστε σίγουρος πως θέλετε να μεταφέρετε την καταγγελία στο HelpLine;')" class="button" style="background-color: #db8008; width: 22%;"><span id="sendHH">Αποστολή σε HelpLine</span></a>
-                              <a id="sendP"  href="/leit/sendEmail.php"  onclick="return confirm('Είστε σίγουρος;')" class="button" style="background-color: #0f0e59; width: 23%;"><span id="sendPP">Αποστολή σε Αστυνομία</span></a>
+                        <!--       <a id="sendH"  href="/leit/moveToHelpLine.php" onclick="return confirm('Are you sure you want to move the complaint to HelpLine?')" class="button" style="background-color: #db8008; width: 20%;"><span id="sendHH">Send to HelpLine</span></a>
+                              <a id="sendP"  href="/leit/sendEmail.php"  onclick="return confirm('Are you sure?')" class="button" style="background-color: #0f0e59; width: 18%;"><span id="sendPP">Send to police</span></a> -->
 
 </fieldset>
 </form>
 </div>
 
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Προσθέστε Ενέργειες</h4>
+        </div>
+        <div class="modal-body">
+          <textarea id="texting" style="width: 550px;height: 100px;" type="text" name=""></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Έξοδος</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="actionss()">Αποθήκευση</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 <!-- <?php
 
@@ -352,7 +383,54 @@ idos kataggelias-->
     </div><!-- /.container -->
   
 </body>
+<script type="text/javascript">
+  
+  
 
+
+
+  function actions() {
+    method = "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", "sendOtherOpToHelpLine.php");
+
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "action");
+            hiddenField.setAttribute("value", document.getElementById("texting").value);
+
+            form.appendChild(hiddenField);
+
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function actionss() {
+    method = "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", "insertActionOtherOperator.php");
+
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "action");
+            hiddenField.setAttribute("value", document.getElementById("texting").value);
+
+            form.appendChild(hiddenField);
+
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
 
 </html>
 
@@ -361,9 +439,11 @@ idos kataggelias-->
  // echo "no set";
   echo ("<SCRIPT LANGUAGE='JavaScript'>
             window.alert('ERROR: YOU DONT HAVE ACCESS TO VIEW THIS PAGE PLEASE LOGIN.')
-            window.location.href='http://localhost/leit/logoutses';
+            window.location.href='http://localhost/leit/logoutses.php';
             </SCRIPT>");
 }
 
 exit();
 ?>
+
+

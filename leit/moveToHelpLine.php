@@ -15,7 +15,7 @@ if (isset($_SESSION['helpdel'])){
     } 
     
     //prepare the the query
-    $sql = "SELECT  name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime FROM hotlinecomplaint where id= $_SESSION[helpdel]";
+    $sql = "SELECT  name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime, sentfrom FROM hotlinecomplaint where id= $_SESSION[helpdel]";
 
     //for greek characters
     mysqli_set_charset($conn, "utf8");
@@ -35,9 +35,10 @@ if (isset($_SESSION['helpdel'])){
     $typeofcomplaint=$row["typeofcomplaint"];
     $details=$row["details"];
     $dateTime=$row["DateTime"];
+        $sentfrom=$row["sentfrom"];
 
     //prepare the query for moving
-    $sql = "INSERT INTO HelpLineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values ('$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime')";
+    $sql = "INSERT INTO HelpLineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sentfrom) Values ('$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime','$sentfrom')";
     //prepare the delete query
     $sqll = "DELETE FROM hotlinecomplaint WHERE ID=$_SESSION[helpdel]";
   
@@ -45,7 +46,7 @@ if (isset($_SESSION['helpdel'])){
     if ( ($conn->query($sql) === TRUE) &&  ($conn->query($sqll) === TRUE)  ) {
         //message for succesful moving
         echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Complaint Removed Successfully')
+            window.alert('Η καταγγελία μεταφέρτηκε επιτυχώς!')
             window.location.href='/leit/despHotLine.php';
             </SCRIPT>");
     }

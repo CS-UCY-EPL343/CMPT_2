@@ -17,6 +17,33 @@
                     }
                 }
             },
+            uname: {
+                validators: {
+                    
+                        stringLength: {
+                        max: 10,
+                        message: 'Το Όνομα Πρέπει Να Έχει Λιγότερους Από 10 Χαρκτήρες'
+                    }
+                }
+            },
+             pword: {
+                validators: {
+                    
+                        stringLength: {
+                        max: 10,
+                        message: 'Ο Κωδικός Πρέπει Να Έχει Λιγότερους Από 10 Χαρκτήρες'
+                    }
+                }
+            },
+             role: {
+                validators: {
+                    
+                        stringLength: {
+                        max: 10,
+                        message: 'Ο Ρόλος Πρέπει Να Έχει Λιγότερους Από 10 Χαρκτήρες'
+                    }
+                }
+            },
             last_name: {
                 validators: {
                         stringLength: {
@@ -77,6 +104,14 @@
                 validators: {
                     notEmpty: {
                         message: 'Παρακαλώ επιλέξτε  Το είδος της καταγγελια'
+                    }
+                    
+                }
+            },
+             from: {
+                validators: {
+                    notEmpty: {
+                        message: 'Παρακαλώ επιλέξτε  Από Που Ήρθε Η καταγγελια'
                     }
                     
                 }

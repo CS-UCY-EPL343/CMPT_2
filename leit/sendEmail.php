@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 $mess= nl2br("Κωδικός Καταγγελίας: ".$_SESSION["id"]."\nΗμερομηνία και Ώρα Καταγγελίας: ".$_SESSION["datetime"]."\nΚαταγγελία για: ".$_SESSION["complaintFor"]."\nΔιεύθυνση ιστοσελίδας(URL): ".$_SESSION["WebsiteName"]."\nΌνομα Εφαρμογής: "
 	.$_SESSION["platformname"]."\nΕίδος Καταγγελίας: ".$_SESSION["typeofcomplaint"]."\nΛεπτομέρειες :".$_SESSION["details"]."\nE-Mail: ".
 	$_SESSION["email"]."\nΟνομα: ".$_SESSION["name"]."\nΕπίθετο: ".$_SESSION["surname"]."\nΕτών: ".$_SESSION["age"]."\nΦύλο: ". $_SESSION["sex"]);
@@ -24,6 +23,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
 } 
+   mysqli_set_charset($conn, "utf8");
 
 //prepare the dwlwting query
 $sql = "DELETE FROM hotlinecomplaint WHERE id=$_SESSION[id]";
@@ -37,7 +37,7 @@ else {
 }
 
 //prepare the query witcj saves the senden complaints
-$sql1 = "INSERT INTO sendedhotline(id,complaintdate,sendToPoliceDate) Values ('$_SESSION[id]','$_SESSION[datetime]',NOW())"; 
+$sql1 = "INSERT INTO sendedhotline(id,complaintdate,sendToPoliceDate,age,sex,typeofcomplaint,sended) Values ('$_SESSION[id]','$_SESSION[datetime]',NOW(),'$_SESSION[age]','$_SESSION[sex]','$_SESSION[typeofcomplaint]','$_SESSION[sentfrom]')"; 
 //execute the bove query
 if($conn->query($sql1)){  
 
@@ -49,13 +49,13 @@ if($conn->query($sql1)){
 $conn->close();
 
 //send the email
-if (mail($to, $subject, $mess, $headers)){
-    //succesfull message
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Email has sent Successfully')
-            window.location.href='/leit/despHotLine.php';
-            </SCRIPT>");
-} 
+// if (mail($to, $subject, $mess, $headers)){
+//     //succesfull message
+//     echo ("<SCRIPT LANGUAGE='JavaScript'>
+//             window.alert('Το Email έχει σταλεί επιτυχώς!')
+//             window.location.href='/leit/despHotLine.php';
+//             </SCRIPT>");
+// } 
 
 ?>
 

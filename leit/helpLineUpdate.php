@@ -77,7 +77,7 @@ if (isset($_SESSION['helpdel'])){
   //execuyr the update query
   if ($conn->query($sql) === TRUE) {
 	 echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Complaint Updtaed Successfully')
+            window.alert('Η καταγγελία τροποποιήθηκε επιτυχώς!')
             window.location.href='/leit/desp.php';
             </SCRIPT>");
   } 
