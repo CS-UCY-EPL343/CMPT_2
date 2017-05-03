@@ -747,41 +747,44 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="modal-body">
-                                <h2>Καταγγελία Hotline</h2>
+                                <h2>Hotline Report</h2>
 
 
 
-                                <br/>
+                                <br>
+
+                                <a href="hotline-section-en.html#complete" style="color: darkblue; font-family: arial">You can find instructions on how to complete the report here</a>
+                                 <br>
+                                 <br>
 
                                 <form class="form-horizontal" action="action.php" method="POST">
                                     <fieldset>
 
 
-                                        <legend>Στοιχεία καταγγελίας</legend>
+                                        <legend>Report Information (obligatory)</legend>
 
                                         <!-- Multiple Radios -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="ReportFor">Καταγγελία για:
+                                            <label class="col-md-4 control-label" for="ReportFor">Report For:
                                                 *</label>
                                             <div class="col-md-4">
                                                 <div class="radio">
                                                     <label for="ReportFor-0">
                                                         <input type="radio" name="ReportFor" id="ReportFor-0"
-                                                               value="webpage" checked="checked">Ιστοσελίδα
+                                                               value="Ιστσελίδα" checked="checked">Website
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportFor-1">
                                                         <input type="radio" name="ReportFor" id="ReportFor-1"
-                                                               value="chatRoom">Εφαρμογή διαδικτυακής επικοινωνίας
+                                                               value="Εφαρμογή διαδικτυακής επικοινωνίας">Online Communications Platform
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label id="urlLabel" class="col-md-4 control-label" for="url">Διεύθυνση
-                                                ιστοσελίδας(URL): *
+                                            <label id="urlLabel" class="col-md-4 control-label" for="url">Website Address(URL): *
                                             </label>
                                             <div class="col-md-4">
                                                 <input name="url" type="URL" class="form-control input-md" id="url"
@@ -790,8 +793,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label id="VoIPLabel" class="col-md-4 control-label" for="VoIP">Όνομα
-                                                Εφαρμογής: *</label>
+                                            <label id="VoIPLabel" class="col-md-4 control-label" for="VoIP">Platform Name: *</label>
                                             <div class="col-md-4">
                                                 <input name="VoIP" type="text" class="form-control input-md" id="VoIP"
                                                        required="" maxlength="30">
@@ -801,49 +803,42 @@
 
                                         <!-- Multiple Radios -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="ReportType1">Είδος Καταγγελίας:
+                                            <label class="col-md-4 control-label" for="ReportType1">Illegal Activity:
                                                 *</label>
                                             <div class="col-md-4">
                                                 <div class="radio">
                                                     <label for="ReportType1_1">
                                                         <input type="radio" name="ReportType" id="ReportType1_1"
-                                                               value="ChildPornography" checked="checked">
-                                                        Παιδική Πορνογραφία
+                                                               value="Παιδική Πορνογραφία" checked="checked">
+                                                        Child Pornography
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType1_2">
                                                         <input type="radio" name="ReportType" id="ReportType1_2"
-                                                               value="Racism">
-                                                        Ρατσισμός/Ξενοφοβία
+                                                               value="Ρατσισμός/Ξενοφοβία">
+                                                        Racicm / Xenophobia
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType1_3">
                                                         <input type="radio" name="ReportType" id="ReportType1_3"
-                                                               value="CopyrightInfrigment">
-                                                        Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)
+                                                               value="Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)">
+                                                        Identity Theft (e.g. Fake Profile)
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType1_4">
                                                         <input type="radio" name="ReportType" id="ReportType1_4"
                                                                value="Hacking">
-                                                        Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="ReportType1_5">
-                                                        <input type="radio" name="ReportType" id="ReportType1_5"
-                                                               value="Bullying">
-                                                        Διαδικτυακός Εκφοβισμός
+                                                        Hacking
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType1_6">
                                                         <input type="radio" name="ReportType" id="ReportType1_6"
-                                                               value="SexualHarassment">
-                                                        Σεξουαλική Παρενόχληση
+                                                               value="Σεξουαλική Παρενόχληση">
+                                                        Sexual Harassment
                                                     </label>
                                                 </div>
 
@@ -851,15 +846,29 @@
                                                     <label for="ReportType1_8">
                                                         <input type="radio" name="ReportType" id="ReportType1_8"
                                                                value="Grooming">
-                                                        Ηλεκτρονική Αποπλάνηση(Grooming)
+                                                        Child Grooming
                                                     </label>
                                                 </div>
 
                                                 <div class="radio">
                                                     <label for="ReportType1_10">
                                                         <input type="radio" name="ReportType" id="ReportType1_10"
-                                                               value="Phishing">
-                                                        Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)
+                                                               value="Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)">
+                                                        Commersial Threats (e.g. phishing)
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="ReportType1_11">
+                                                        <input type="radio" name="ReportType" id="ReportType1_11"
+                                                               value="Ανεπιθύμητη Αλληλογραφία">
+                                                        Spam
+                                                    </label>
+                                                </div>
+                                                 <div class="radio">
+                                                    <label for="ReportType1_12">
+                                                        <input type="radio" name="ReportType" id="ReportType1_12"
+                                                               value="Εθισμός Στο Διαδίκτυο">
+                                                        Internet Addiction
                                                     </label>
                                                 </div>
                                             </div>
@@ -867,7 +876,7 @@
 
                                         <!-- Textarea -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="Details1">Λεπτομέρειες</label>
+                                            <label class="col-md-4 control-label" for="Details1">Details</label>
                                             <div class="col-md-4">
                                                 <textarea class="form-control" id="Details1" name="Details"
                                                           maxlength="1000"></textarea>
@@ -876,7 +885,7 @@
 
 
                                         <!-- Form Name -->
-                                        <legend>Προσωπικά Στοιχεία (Προαιρετικά)</legend>
+                                        <legend>Personal Information (optional)</legend>
 
                                         <!-- Text input-->
                                         <div class="form-group">
@@ -890,7 +899,7 @@
 
                                         <!-- Text input-->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="name">Όνομα:</label>
+                                            <label class="col-md-4 control-label" for="name">Name:</label>
                                             <div class="col-md-4">
                                                 <input id="name1" name="name" type="text" placeholder=""
                                                        class="form-control input-md" maxlength="50">
@@ -900,7 +909,7 @@
 
                                         <!-- Text input-->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="surname">Επίθετο:</label>
+                                            <label class="col-md-4 control-label" for="surname">Surname:</label>
                                             <div class="col-md-4">
                                                 <input id="surname1" name="surname" type="text" placeholder=""
                                                        class="form-control input-md" maxlength="50">
@@ -909,7 +918,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="date">Ημερ. Γέννησης:</label>
+                                            <label class="col-md-4 control-label" for="date">Date of Birth:</label>
                                             <div class="col-md-4">
                                                 <input name="date" type="Date" class="form-control input-md" id="date1">
                                             </div>
@@ -917,13 +926,13 @@
 
                                         <!-- Multiple Radios (inline) -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="gender">Φύλο:</label>
+                                            <label class="col-md-4 control-label" for="gender">Sex:</label>
                                             <div class="col-md-4">
                                                 <label class="radio-inline" for="gender">
-                                                    <input type="radio" name="gender" id="genderM1" value="m">Άρρεν
+                                                    <input type="radio" name="gender" id="genderM1" value="Α">Male
                                                 </label>
                                                 <label class="radio-inline" for="gender">
-                                                    <input type="radio" name="gender" id="genderF1" value="f">Θύλη
+                                                    <input type="radio" name="gender" id="genderF1" value="Γ">Female
                                                 </label>
                                             </div>
                                         </div>
@@ -932,12 +941,12 @@
                                             <label class="col-md-4 control-label" for="submit1"></label>
                                             <div class="col-md-4">
                                                 <button type="submit" id="submit1" name="submit"
-                                                        class="btn btn-primary">Υποβολη
+                                                        class="btn btn-primary">Submit
                                                 </button>
                                             </div>
                                         </div>
 
-                                        <a href="hotline-section.html#complete">Instructions to complete the form</a>
+                                        
                                     </fieldset>
 
                                 </form>
@@ -946,28 +955,22 @@
                                 <br/>
 
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                        class="fa fa-times"></i> Ακυρωση
+                                        class="fa fa-times"></i> Cancel
                                 </button>
                                 <nav>
                                     <center>
                                         <p>
-                                        <p>*: υποχρεωτικό πεδίο</p>
-                                        <p>Αυτή η καταγγελία, αφού εξεταστεί, θα σταλεί ανώνυμα στην αστυνομία για εσάς.
-                                            Εάν δεν επιθυμήτε κάτι τέτοιο και σκοπός σας είναι να συνομιλήσετε με
-                                            κάποιον λειτουργό τότε παρακαλούμε όπως αποταθείτε στην υπηρεσία
-                                            Helpline. </p>
-                                        <p> Όλες οι πληφορορίες και προσωπικά στοιχεία είναι και θα παραμείνουν
-                                            εμπιστευτικά. Οι καταγγελίες διαγράφονται μετά την αποστολή τους στην
-                                            αστυνομία εκτός εάν εσείς επιθυμείτε διαφορετικά.</p>
+                                        <p>*: obligatory field</p>
+                                        <p>This report after it is validated, will be sent to the police anonymously.
+                                            If you do not wish for this and simply want to talk with someone about something that concerns you please use the helpline service. </p>
+                                        <p> All information is and remain completely confidential</p>
                                         <p> Σας προτρέπουμε όπως μας δώσετε προσωπικά στοιχεία εάν κρίνεται πως είναι
                                             αναγκαία για την καταγγελία σας.</p>
-                                        <p>Στις λεπτομέρειες μπορείτε να δώσετε περισσότερες πληροφορίες σχετικά με την
-                                            καταγγελία σας καθώς και προσωπικά στοιχεία δικά σας ή και κάποιου άλλου
-                                            προσώπου σε περίπτωση που κρίνετε πως είναι αναγκαία για την καταγγελία ή
-                                            και επιθυμείτε να λάβετε πληροφορίες σχετικά με την εξέλιξή της.</p>
+                                        <p>We highly recommend that you give personal details if you deem them required for the report.</p> 
+                                                    <p>In the details section you can give more details about the report as well as more personal details, yours or another person's, shall you deem them required for the report.</p>
 
 
-                                        </p>
+                                        
                                     </center>
                                 </nav>
                             </div>
@@ -994,7 +997,11 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div class="modal-body">
-                                <h2>Καταγγελία Helpline</h2><br/>
+                                <h2>Helpline Report</h2><br/>
+
+                                 <a href="helpline-section-en.html#complete" style="color: darkblue; font-family: arial">You can find instructions on how to complete the report here</a>
+                                 <br>
+                                 <br>
 
                                 <form class="form-horizontal" action="actionHelpline.php" method="POST">
                                     <fieldset>
@@ -1002,31 +1009,30 @@
                                         <!-- Form Name -->
 
 
-                                        <legend>Στοιχεία καταγγελίας</legend>
+                                        <legend>Report Information (obligatory)</legend>
 
                                         <!-- Multiple Radios -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="ReportFor">Καταγγελία για:
+                                            <label class="col-md-4 control-label" for="ReportFor">Report For:
                                                 *</label>
                                             <div class="col-md-4">
                                                 <div class="radio">
                                                     <label for="ReportFor1_1">
                                                         <input type="radio" name="ReportFor" id="ReportFor1_1"
-                                                               value="webpage" checked="checked">Ιστοσελίδα
+                                                               value="Ιστοσελίδα" checked="checked">Website
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportFor1_2">
                                                         <input type="radio" name="ReportFor" id="ReportFor1_2"
-                                                               value="chatRoom">Εφαρμογή διαδικτυακής επικοινωνίας
+                                                               value="Εφαρμογή διαδικτυακής επικοινωνίας">Online Communications Platform
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label id="urlLabel1" class="col-md-4 control-label" for="url">Διεύθυνση
-                                                ιστοσελίδας(URL): *
+                                            <label id="urlLabel1" class="col-md-4 control-label" for="url">Website Address(URL): *
                                             </label>
                                             <div class="col-md-4">
                                                 <input name="url" type="URL" class="form-control input-md" id="url1"
@@ -1035,8 +1041,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label id="VoIPLabel" class="col-md-4 control-label" for="VoIP">Όνομα
-                                                Εφαρμογής: *</label>
+                                            <label id="VoIPLabel" class="col-md-4 control-label" for="VoIP">Platform Name: *</label>
                                             <div class="col-md-4">
                                                 <input name="VoIP" type="text" class="form-control input-md" id="VoIP1"
                                                        required="" maxlength="30">
@@ -1046,77 +1051,71 @@
 
                                         <!-- Multiple Radios -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="ReportType">Είδος Καταγγελίας:
+                                            <label class="col-md-4 control-label" for="ReportType">Topic:
                                                 *</label>
                                             <div class="col-md-4">
                                                 <div class="radio">
                                                     <label for="ReportType-0">
                                                         <input type="radio" name="ReportType" id="ReportType-0"
-                                                               value="ChildPornography" checked="checked">
-                                                        Παιδική Πορνογραφία
+                                                               value="Παιδική Πορνογραφία" checked="checked">
+                                                        Child Pornography
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-1">
                                                         <input type="radio" name="ReportType" id="ReportType-1"
-                                                               value="Racism">
-                                                        Ρατσισμός/Ξενοφοβία
+                                                               value="Ρατσισμός / Διαδίκτυο">
+                                                        Racicm / Xenophobia
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-2">
                                                         <input type="radio" name="ReportType" id="ReportType-2"
-                                                               value="CopyrightInfrigment">
-                                                        Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)
+                                                               value="Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)">
+                                                        Identity Theft (e.g. fake profile)
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-3">
                                                         <input type="radio" name="ReportType" id="ReportType-3"
                                                                value="Hacking">
-                                                        Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)
+                                                        Hacking
                                                     </label>
                                                 </div>
-                                                <div class="radio">
-                                                    <label for="ReportType-4">
-                                                        <input type="radio" name="ReportType" id="ReportType-4"
-                                                               value="Bullying">
-                                                        Διαδικτυακός Εκφοβισμός
-                                                    </label>
-                                                </div>
+                                                
                                                 <div class="radio">
                                                     <label for="ReportType-5">
                                                         <input type="radio" name="ReportType" id="ReportType-5"
-                                                               value="SexualHarassment">
-                                                        Σεξουαλική Παρενόχληση
+                                                               value="Σεξουαλική Παρενόχληση">
+                                                        Sexual Harassment
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-6">
                                                         <input type="radio" name="ReportType" id="ReportType-6"
-                                                               value="InternetAddiction">
-                                                        Εθισμός Στο Διαδίκτυο
+                                                               value="Εθισμός Στο Διαδίκτυο">
+                                                        Internet Addiction
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-7">
                                                         <input type="radio" name="ReportType" id="ReportType-7"
                                                                value="Grooming">
-                                                        Ηλεκτρονική Αποπλάνηση(Grooming)
+                                                        Child Grooming
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-10">
                                                         <input type="radio" name="ReportType" id="ReportType-10"
-                                                               value="Spam">
-                                                        Ανεπιθύμητη Αλληλογραφία
+                                                               value="Ανεπιθύμητη Αλληλογραφία">
+                                                        Spam
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label for="ReportType-11">
                                                         <input type="radio" name="ReportType" id="ReportType-11"
-                                                               value="Phishing">
-                                                        Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)
+                                                               value="Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)">
+                                                        Commersial Threats (e.g. phising)
                                                     </label>
                                                 </div>
                                             </div>
@@ -1124,7 +1123,7 @@
 
                                         <!-- Textarea -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="Details">Λεπτομέρειες</label>
+                                            <label class="col-md-4 control-label" for="Details">Details</label>
                                             <div class="col-md-4">
                                                 <textarea class="form-control" id="Details" name="Details"
                                                           maxlength="1000"></textarea>
@@ -1132,7 +1131,7 @@
                                         </div>
 
 
-                                        <legend>Προσωπικά Στοιχεία</legend>
+                                        <legend>Personal Inforamtion (optional)</legend>
 
                                         <!-- Text input-->
                                         <div class="form-group">
@@ -1146,7 +1145,7 @@
 
                                         <!-- Text input-->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="name">Όνομα:</label>
+                                            <label class="col-md-4 control-label" for="name">Name:</label>
                                             <div class="col-md-4">
                                                 <input id="name" name="name" type="text" placeholder=""
                                                        class="form-control input-md" maxlength="50">
@@ -1156,7 +1155,7 @@
 
                                         <!-- Text input-->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="surname">Επίθετο:</label>
+                                            <label class="col-md-4 control-label" for="surname">Surname:</label>
                                             <div class="col-md-4">
                                                 <input id="surname" name="surname" type="text" placeholder=""
                                                        class="form-control input-md" maxlength="50">
@@ -1165,7 +1164,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="Date">Ημερ. Γέννησης:</label>
+                                            <label class="col-md-4 control-label" for="Date">Date of Birth:</label>
                                             <div class="col-md-4">
                                                 <input name="date" type="Date" class="form-control input-md" id="date">
                                             </div>
@@ -1173,13 +1172,13 @@
 
                                         <!-- Multiple Radios (inline) -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="gender">Φύλο:</label>
+                                            <label class="col-md-4 control-label" for="gender">Sex:</label>
                                             <div class="col-md-4">
                                                 <label class="radio-inline" for="gender-0">
-                                                    <input type="radio" name="gender" id="gender-0" value="male">Άρρεν
+                                                    <input type="radio" name="gender" id="gender-0" value="Α">Male
                                                 </label>
                                                 <label class="radio-inline" for="gender-1">
-                                                    <input type="radio" name="gender" id="gender-1" value="female">Θύλη
+                                                    <input type="radio" name="gender" id="gender-1" value="Γ">Female
                                                 </label>
                                             </div>
                                         </div>
@@ -1189,12 +1188,12 @@
                                             <label class="col-md-4 control-label" for="submit"></label>
                                             <div class="col-md-4">
                                                 <button type="submit" id="submit" name="submit" class="btn btn-primary">
-                                                    Υποβολη
+                                                     Submit
                                                 </button>
                                             </div>
                                         </div>
 
-                                        <a href="helpline-section-en.html#complete">Instructions to complete the form</a>
+                                       
                                     </fieldset>
                                 </form>
 
@@ -1202,23 +1201,17 @@
                                 <br/>
 
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                        class="fa fa-times"></i> Ακυρωση
+                                        class="fa fa-times"></i> Cancel
                                 </button>
                                 <nav>
                                     <center>
                                         <p>
-                                        <p>*: υποχρεωτικό πεδίο</p>
-                                        <p>Στις λεπτομέρειες μπορείτε να δώσετε περισσότερα προσωπικά στοιχεία που θα
-                                            χρησημοποιηθούν στην επικοινωνία μαζί σας. Προτρέπουμε όπως δώσεται ακόμα
-                                            περισσότερες πληοροφορίες που μπορεί να χρειάζονται σχετικά με την
-                                            καταγγελία.</p>
-                                        <p>Το πεδίο email είναι υποχρωτικό, αφού θα χρησιμοποιηθεί από τους λειτουργούς
-                                            μας για επικοινωνία μαζί σας.</p>
-                                        <p>Υπενθυμίζουμε πως η καταγγελία Helpline θα καταλήξει σε κάποιο λειτουργό μας,
-                                            ο οποίος θα επικοινωνίσει μαζί σας μέσω email, για συζήτηση του προβλήματος.
-                                            Εάν επιθυμείται η καταγγελία σας να καταλήξει ανώνυμα στην αστυνομία
-                                            παρακαλούμε όπως αποταθείτε στην υπηρεσία Hotline.</p>
-                                        <p>Οποιαδήποτε προσωπικά στοιχεία σας είναι και θα παραμείνουν εμπιστευτικά.</p>
+                                        <p>*: obligatory field</p>
+                                                    <p>In the details section you can provide more personal that may be used to communicate with you if you wish. We recommend that you provide more information regarding the report.</p>
+                                                    <p>The email field is obligatory, as it will be used by our operators to communicate with you.
+                                                    </p>
+                                                    <p>We would like to remind you that this report will be viewed by one of your operators, who will then communicate with you to discuss your problem. If you wish to make an anonymous report, that will end up to the police then please visit the Hotline report service</p>
+                                                    <p>Any personal information will remain trully confidential</p>  
 
                                         </p>
                                     </center>

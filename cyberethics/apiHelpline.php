@@ -51,7 +51,7 @@
 		if(empty($DOB))
 			$age =  0;
 		else{
-			$from = new DateTime($DOB);
+			$from = new DateTime($_POST['date']);
 			$to = new DateTime('today');
 			$age = $from->diff($to)->y; 
 		}
@@ -72,7 +72,7 @@
 	    $conn->exec("set names utf8");
 
 	    if ($ReportFor=="Ιστοσελίδα") {
-	    	$sql = "INSERT INTO HotlineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sended) Values (:name,:surname,:email,$age,'$sex','$ReportFor',:url,:var2,'$activity',:details,NOW(),'s')";
+	    	$sql = "INSERT INTO HelplineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sended) Values (:name,:surname,:email,$age,'$sex','$ReportFor',:url,:var2,'$activity',:details,NOW(),'s')";
 	    	$statement = $conn->prepare($sql);
 	   
 			//Execute SQL statement
@@ -86,7 +86,7 @@
 		    ));
 	    }
 	    else{
-	    	$sql = "INSERT INTO HotlineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sended) Values (:name,:surname,:email,$age,'$sex','$ReportFor',:url,:var2,'$activity',:details,NOW(),'s')";
+	    	$sql = "INSERT INTO HelplineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sended) Values (:name,:surname,:email,$age,'$sex','$ReportFor',:url,:var2,'$activity',:details,NOW(),'s')";
 	    	$statement = $conn->prepare($sql);
 	   
 			//Execute SQL statement

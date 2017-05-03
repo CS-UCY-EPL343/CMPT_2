@@ -52,7 +52,7 @@
 	}
 
 	//echo $_POST['url'];
-	echo $_POST['VoIP'];
+	//echo $_POST['VoIP'];
 
 	$var = isset($_POST['gender'])? $_POST['gender']:'' ; echo $var; //Gender
 	$var1 = isset($_POST['url'])? $_POST['url']: "";//URL

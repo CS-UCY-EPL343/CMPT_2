@@ -1,10 +1,9 @@
 <ion-view title="Helpline" id="page8">
   <ion-content padding="true" class="has-header">
-    <h1 id="helpline-heading4" style="color:#000000;text-align:center;">Helpline Report</h1>
+    <h1 id="helpline-heading4" style="color:#000000;text-align:center;">{{"HelplineReport"|translate}}</h1>
     <div>
       <p id="hinfo">
-        For more information about what is a helpline report please visit the
-        <a ui-sref="menu.aboutUs">About </a>section
+        {{"MoreInfoHelpline"|translate}}
       </p>
 
       <style type="text/css">
@@ -17,68 +16,67 @@
     </div>
     <form id="helpline-form2" class="list">
       <div id="helpline-markdown8" style="text-align:center;" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">Report Information (obligatory)</p>
+        <p style="color:#000000;">{{"ReportInformation"|translate}}</p>
       </div>
       <label class="item item-select" id="helpline-select4" name="ReportFor">
-        <span class="input-label" ng-model="data.ReportFor">Report For *</span>
+        <span class="input-label" ng-model="data.ReportFor">{{"ReportFor"|translate}} *</span>
         <select>
-          <option>Website</option>
-          <option>Online Communications Platform</option>
+          <option value="Ιστσελίδα">{{"website"|translate}}</option>
+          <option value="Εφαρμογή διαδικτυακής επικοινωνίας">{{"VOIP"|translate}}</option>
         </select>
       </label>
       <label class="item item-input item-stacked-label" id="helpline-input9" name="url">
-        <span class="input-label">Website or Platform Name *</span>
+        <span class="input-label">{{"WebORPlat"|translate}}</span>
         <input type="text" placeholder="http://www.example.com/1234 or platform name" name="url" ng-model="data.url" maxlength="250">
       </label>
       <label class="item item-select" id="helpline-select5" name="TypeOfReport">
-        <span class="input-label">Topic *</span>
+        <span class="input-label">{{"Topic"|translate}} *</span>
         <select ng-model="data.activity" name="activity">
-          <option selected="true">Child Pornography</option>
-          <option>Racicm / Xenophobia</option>
-          <option>Identity Theft(e.g. fake profile)</option>
-          <option>Hacking</option>
-          <option>Cyberbullying</option>
-          <option>Sexual Harassment</option>
-          <option>Grooming</option>
-          <option>Commersial Threats (e.g. Phishing)</option>
-          <option>Internet Addiction</option>
-          <option>Spam</option>
+          <option value="Παιδική Πορνογραφία" selected="true">{{"ChildPornography"|translate}}</option>
+          <option value="Ρατσισμός/Ξενοφοβία">{{"RacicmXenophobia"|translate}}</option>
+          <option value="Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)">{{"IdentityTheft"|translate}}</option>
+          <option value="Hacking">Hacking</option>
+          <option value="Σεξουαλική Παρενόχληση">{{"SexualHarassment"|translate}}</option>
+          <option value="Grooming">{{"ChildGrooming"|translate}}</option>
+          <option value="Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)">{{"CommersialThreats"|translate}}</option>
+          <option value="Εθισμός Στο Διαδίκτυο">{{"InternetAddiction"|translate}}</option>
+          <option value="Ανεπιθύμητη Αλληλογραφία">{{"Spam"|translate}}</option>
         </select>
       </label>
       <label class="item item-input item-stacked-label" id="helpline-input10" name="Details">
-        <span class="input-label">Details</span>
+        <span class="input-label">{{"Details"|translate}}</span>
         <input type="text" placeholder="" name="details" ng-model="data.details" maxlength="1000">
       </label>
       <div class="spacer" style="width: 287px; height: 8px;"></div>
       <div id="helpline-markdown9" style="text-align:center;" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">Personal Information (optional)</p>
+        <p style="color:#000000;">{{"PersonalInformation"|translate}}</p>
       </div>
       <label class="item item-input item-stacked-label" id="helpline-input11" name="email">
         <span class="input-label">Email *</span>
         <input type="email" placeholder="example@domain.com" name="email" ng-model="data.email" maxlength="250">
       </label>
       <label class="item item-input item-stacked-label" id="helpline-input12">
-        <span class="input-label">Name</span>
+        <span class="input-label">{{"Name"|translate}}</span>
         <input type="text" placeholder="John" name="name" ng-model="data.name" maxlength="25">
       </label>
       <label class="item item-input item-stacked-label" id="helpline-input13" name="surname">
-        <span class="input-label">Surname</span>
+        <span class="input-label">{{"Surname"|translate}}</span>
         <input type="text" placeholder="Smith" name="surname" maxlength="25" ng-model="data.surname">
       </label>
       <label class="item item-input" id="helpline-input14" name="date">
-        <span class="input-label">Date of Birth</span>
+        <span class="input-label">{{"DOB"|translate}}</span>
         <input type="date" placeholder="" name="DOB" ng-model="data.DOB">
       </label>
       <label class="item item-select" id="helpline-select3.0" name="Gender">
-        <span class="input-label">Sex</span>
+        <span class="input-label">{{"sex"|translate}}</span>
         <select ng-model="data.sex" name="sex">
-          <option>Male</option>
-          <option>Female</option>
+          <option value="Male">{{"Male"|translate}}</option>
+          <option value="Female">{{"Female"|translate}}</option>
         </select>
       </label>
 
-      <button id="helpline-button9" class="button button-positive  button-block" type="submit" value="submit" ng-click="submit()">Submit</button>
-      <button id="helpline-button10" class="button button-positive  button-block" ng-click="clear()">Clear</button>
+      <button id="helpline-button9" class="button button-positive  button-block" type="submit" value="submit" ng-click="submit()">{{"Submit"|translate}}</button>
+      <button id="helpline-button10" class="button button-positive  button-block" value="Clear" ng-click="clear()">{{"Clear"|translate}}</button>
     </form>
     
   </ion-content>
