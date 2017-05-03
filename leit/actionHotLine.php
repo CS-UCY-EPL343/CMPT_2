@@ -26,10 +26,10 @@
 
 
     //get the fields from the form (POST table) and initialize the variables
-	if(empty($_POST['email']))
+	if(empty($_POST['email2']))
 		$email = '';
 	else  
-		$email = $_POST['email'];
+		$email = $_POST['email2'];
 	if(empty($_POST['first_name']))
 		$name = "";
 	else
@@ -53,10 +53,10 @@
 	$var1 = isset($_POST['website'])? $_POST['website']: "";//URL
 	$var2 = isset($_POST['platname']) ? $_POST['platname']: '';//Platform Name
 	$var3 = empty($_POST['comment'])? '': $_POST['comment'];//Details
-
+    $sentfrom=$_POST['from'];
      
 	//Prepare sql Statement
- 	$sql = "INSERT INTO HotLineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,'$age','$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
+ 	$sql = "INSERT INTO HotLineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sentfrom) Values (:name,:surname,:email,'$age','$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW(),'$sentfrom')";
     $statement = $conn->prepare($sql);
    
 	//Execute SQL statement
@@ -70,7 +70,7 @@
     ));
 
    //message for succesfull sumbitted and go 2 pages back
-   echo "<script type='text/javascript'>alert('Complaint Submitted Succesfully');history.go(-2);</script>";
+   echo "<script type='text/javascript'>alert('Η καταγγελία καταχωρήθηκε επιτυχώς ');history.go(-2);</script>";
 
  ?>
 

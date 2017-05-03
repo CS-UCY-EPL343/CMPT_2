@@ -22,20 +22,22 @@
     {
     	echo "Connection failed: " . $e->getMessage();
     }
+  
+  $conn->exec("set names utf8");
 
 
 
 	if(empty($_POST['email']))
-		$email = 'N/A';
+		$email = '';
 	else  
 		$email = $_POST['email'];
 	if(empty($_POST['name']))
-		$name = "N/A";
+		$name = "";
 	else
 		$name = $_POST['name'];
 					
 	if(empty($_POST['surname']))
-		$surname =  "N/A";
+		$surname =  "";
 	else
 		$surname = $_POST['surname'];
 					  
@@ -48,12 +50,12 @@
 	} echo nl2br("\n");
 
 	$var = isset($_POST['gender'])? $_POST['gender']:'' ; echo $var; //Gender
-	$var1 = isset($_POST['url'])? $_POST['url']: "N/A";//URL
-	$var2 = isset($_POST['VoIP']) ? $_POST['VoIP']: 'N/A';//Platform Name
-	$var3 = empty($_POST['Details'])? 'N/A': $_POST['Details'];//Details
+	$var1 = isset($_POST['url'])? $_POST['url']: "";//URL
+	$var2 = isset($_POST['VoIP']) ? $_POST['VoIP']: '';//Platform Name
+	$var3 = empty($_POST['Details'])? '': $_POST['Details'];//Details
 
 	//Prepare sql Statement
- 	$sql = "INSERT INTO HotlineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime) Values (:name,:surname,:email,$age,'$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW())";
+ 	$sql = "INSERT INTO HotlineComplaint(Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sentfrom) Values (:name,:surname,:email,$age,'$var','$_POST[ReportFor]',:var1,:var2,'$_POST[ReportType]',:var3,NOW(),'w')";
     $statement = $conn->prepare($sql);
    
 	//Execute SQL statement

@@ -1,3 +1,10 @@
+<?php
+session_start();
+//echo $_SESSION["user"];
+if (isset($_SESSION['user']) and strcmp("t",$_SESSION['role'])==0) {
+
+?>
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -69,21 +76,29 @@
     <div class="col-md-4 selectContainer">
     	<div class="input-group">
         	<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    		<select name="ReportType" class="form-control selectpicker" >
+    		  <select name="ReportType" class="form-control selectpicker" >
       			<option value="">Είδος Καταγγελίας</option>
-			    <option value="Παιδική Πορνογραφία">Παιδική Πορνογραφία</option>
-			    <option value="Ρατσισμός/Ξενοφοβία">Ρατσισμός/Ξενοφοβία</option>
-			    <option value="Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)">Κλοπή Προσωπικών Δεδομένων(π.χ. Ψεύτικο Προφίλ)</option>
-		        <option value="Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)">Παραβίαση Του Απορρήτου Των Επικοινωνιών(Hacking)</option>
-		        <option value="Διαδικτυακός Εκφοβισμός">Διαδικτυακός Εκφοβισμός</option>
-	    	    <option value="Σεξουαλική Παρενόχληση">Σεξουαλική Παρενόχληση</option>
-			    <option value="Εθισμός Στο Διαδίκτυο">Εθισμός Στο Διαδίκτυο</option>
-			    <option value="Ηλεκτρονική Αποπλάνηση(Grooming)">Ηλεκτρονική Αποπλάνηση(Grooming)</option>
-			    <option value="Ανεπιθύμητη Αλληλογραφία">Ανεπιθύμητη Αλληλογραφία</option>
-			    <option value="Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)">Εμπορικοί Κίνδυνοι/Απειλές (π.χ. Phishing)</option>
-   		    </select>
-        </div>
+			      <option value="Παιδική Πορνογραφία">Παιδική Πορνογραφία</option>
+			      <option value="Ρατσισμός/Ξενοφοβία">Ρατσισμός/Ξενοφοβία</option> 
+		        <option value="Hacking">Hacking</option>  
+   		     </select>
+      </div>
 	</div>
+</div>
+
+<div class="form-group"> 
+  <label class="col-md-4 control-label">Από</label>
+    <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+          <select name="from" class="form-control selectpicker" >
+            <option value="">Από</option>
+            <option value="m">Email</option>
+            <option value="c">Chat</option> 
+            <option value="p">Τηλέφωνο</option>  
+           </select>
+      </div>
+  </div>
 </div>
 
 <!--comments input-->
@@ -164,7 +179,10 @@
 <div class="form-group">
 	<label class="col-md-4 control-label"></label>
   	<div class="col-md-4">
+               <button type="button"   class="btn btn-default " onclick="fyn()" >Πίσω<span class="glyphicon glyphicon-chevron-left"></span></button>
+
     	<button type="submit"  class="btn btn-warning"  >Υποβολή<span class="glyphicon glyphicon-send"></span></button>
+
   	</div>
 </div>
 
@@ -176,6 +194,12 @@
 </form>
 </div>
 
+
+<script type="text/javascript">
+  function fyn(){
+     location.href = "/leit/despHotLine.php";
+  }
+  </script>
 <!--libraries-->
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
@@ -213,3 +237,15 @@ function myFunction() {
   
 </body>
 </html>
+
+<?php
+}else{
+ // echo "no set";
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert('ERROR: YOU DONT HAVE ACCESS TO VIEW THIS PAGE PLEASE LOGIN.')
+            window.location.href='http://localhost/leit/logoutses';
+            </SCRIPT>");
+}
+
+exit();
+?>

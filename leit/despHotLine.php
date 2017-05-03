@@ -1,13 +1,14 @@
 <?php
 session_start();
 //echo $_SESSION["user"];
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user']) and strcmp("t",$_SESSION['role'])==0) {
 
 ?>
 
 
 <html>
 <head>
+<script src="getDate.js"></script>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
@@ -41,7 +42,7 @@ if (isset($_SESSION['user'])) {
     
     <script>
     //setTimeout(createjson, 3000);
-window.setInterval(createjson, 1000);
+window.setInterval(createjson, 300);
      function createjson(){
 
 
@@ -100,8 +101,11 @@ window.setInterval(createjson, 1000);
         <h1>Λειτουργός HotLine</h1>
 
         <nav>
-            <a href="#" >View Complaints</a>
-            <a href="#">View Statistics</a>
+     <!--        <a href="#" >Προβολή Καταγγελιών</a>
+            <a href="#">View Statistics</a> -->
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
             <a href="#">Live Chat</a>
            <!--  <a href="#">Reports</a>
             <a href="#">Roles <span class="header-new-feature">new</span></a> -->
@@ -112,9 +116,9 @@ window.setInterval(createjson, 1000);
             <img src="person.png" alt="User Image"/>
 
             <ul>
-                <li><a href="#">Settings</a></li>
-                <li><a href="CreateFormHotLine.php">Create Form</a></li>
-                <li><a href="http://localhost/login/index.html" class="highlight">Logout</a></li>
+                 <li><a href="/changepswd/change_password.php">Αλλαγή Κωδικού</a></li>
+                <li><a href="CreateFormHotLine.php">Δημιουργία Φόρμας</a></li>
+                <li><a href="http://localhost/login/index.html" class="highlight">Αποσύνδεση</a></li>
             </ul>
         </div>
 
@@ -143,7 +147,7 @@ window.setInterval(createjson, 1000);
 
 <script>
 
-window.setInterval(showjson, 2000);
+window.setInterval(showjson, 500);
 function post(test) {
     method = "post"; // Set method to post by default if not specified.
 
@@ -195,7 +199,14 @@ function post(test) {
 
             for (var i = 0; i < col.length; i++) {
                 var th = document.createElement("th");      // TABLE HEADER.
-                th.innerHTML = col[i];
+                if (col[i]=="ID"){
+                    vali="Κωδικός"
+                }
+                else if(col[i]=="DateTime"){
+                    vali="Ημερομηνία Καταγγελίας"
+                }
+                // th.innerHTML = col[i];
+                th.innerHTML = vali;
                 tr.appendChild(th);
             }
 
@@ -206,7 +217,21 @@ function post(test) {
 
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
-                    tabCell.innerHTML = arrItems[i][col[j]];
+                    if(j%2==1){
+                        var date= new Date(arrItems[i][col[j]]);
+                        var datee=date.getDate();
+                        var day=getTheDay(date.getDay());
+                        var month=getTheMonth(date.getMonth());
+                        var hours=date.getHours();
+                        var minutes=date.getMinutes();
+                        var year=date.getFullYear();
+                        var p=day+" "+datee+" "+month+" "+year+" "+hours+":"+minutes;
+                    }
+                    else{
+                       var p=arrItems[i][col[j]]
+                    }
+
+                    tabCell.innerHTML = p;
 
                 }
 
@@ -288,7 +313,7 @@ function post(test) {
  // echo "no set";
   echo ("<SCRIPT LANGUAGE='JavaScript'>
             window.alert('ERROR: YOU DONT HAVE ACCESS TO VIEW THIS PAGE PLEASE LOGIN.')
-            window.location.href='http://localhost/login/index.html';
+            window.location.href='http://localhost/leit/logoutses';
             </SCRIPT>");
 }
 

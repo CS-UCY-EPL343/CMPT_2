@@ -22,7 +22,7 @@ if (isset($_SESSION['helpdel'])){
 	$sql = "DELETE FROM helplinecomplaint WHERE id=$_SESSION[helpdel]";
 
 
-$sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime,sentfrom FROM helplinecomplaint where id= $_SESSION[helpdel]";
+$sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime,actionstaken,sentfrom FROM helplinecomplaint where id= $_SESSION[helpdel]";
     //execute the query
     $result = $conn->query($sql1);
 
@@ -40,10 +40,10 @@ $sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, 
     $typeofcomplaint=$row["typeofcomplaint"];
     $details=$row["details"];
     $dateTime=$row["DateTime"];
-        $sentfrom=$row["sentfrom"];
-
+    $action=$row["actionstaken"];
+    $sentfrom=$row["sentfrom"];
     //prepare the moving query
-    $sql1 = "INSERT INTO reportedhelpline(ID,Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sentfrom) Values ('$iid','$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime','$sentfrom')";
+    $sql1 = "INSERT INTO closedHelpLine(ID,Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,actionstaken,Datetimeclosed,sended) Values ('$iid','$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime','$action',NOW(),'$sentfrom')";
 
 
 
@@ -51,7 +51,7 @@ $sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, 
     //execute the query
 	if(   ($conn->query($sql1) === TRUE)  &&  ($conn->query($sql) === TRUE)    ) {
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
-         	window.alert('Η καταγγελία διαγράφτηκε επιτυχώς')
+         	window.alert('Η καταγγελία ολοκληρώθηκε!')
             window.location.href='/leit/desp.php';
             </SCRIPT>");
 	} 

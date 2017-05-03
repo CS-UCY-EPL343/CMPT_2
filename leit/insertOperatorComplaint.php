@@ -15,8 +15,10 @@ if (isset($_SESSION['helpdel'])){
 	} 
    mysqli_set_charset($conn, "utf8");
     //prepare the query
-	$sql = "DELETE FROM hotlinecomplaint WHERE id=$_SESSION[helpdel]";
-     $sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime,sentfrom FROM hotlinecomplaint where id= $_SESSION[helpdel]";
+	//$sql = "DELETE FROM  WHERE id=$_SESSION[helpdel]";
+     $sql1 = "SELECT  ID,name, surname, email, age, sex , complaintFor, WebsiteName, platformname, typeofcomplaint,details,DateTime,actionstaken FROM helplinecomplaint where id= $_SESSION[helpdel]";
+
+
     //execute the query
     $result = $conn->query($sql1);
 
@@ -34,10 +36,13 @@ if (isset($_SESSION['helpdel'])){
     $typeofcomplaint=$row["typeofcomplaint"];
     $details=$row["details"];
     $dateTime=$row["DateTime"];
-        $sentfrom=$row["sentfrom"];
+    $action=$row["actionstaken"];
+    $username=$_POST["other"];
 
+    $sql2 = "UPDATE helplinecomplaint SET sended='y'  where id=$iid";
+    $conn->query($sql2);
     //prepare the moving query
-    $sql1 = "INSERT INTO reportedHotLine(ID,Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,sentfrom) Values ('$iid','$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime','$sentfrom')";
+    $sql1 = "INSERT INTO otheroperatorcomplaint(ID,Name,Surname,email,Age,Sex,ComplaintFor,WebsiteName,PlatformName,TypeofComplaint,Details,DateTime,username,actionstaken) Values ('$iid','$name','$surname','$email','$age','$sex','$complaintFor','$WebsiteName','$platformname','$typeofcomplaint','$details','$dateTime','$username','$action')";
 
 
 
@@ -45,10 +50,10 @@ if (isset($_SESSION['helpdel'])){
 
 
     //execute the query
-	if(   ($conn->query($sql1) === TRUE)  &&  ($conn->query($sql) === TRUE)    ) {
+	if(   ($conn->query($sql1) === TRUE)  ) {
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Η καταγγελία διαγράφτηκε επιτυχώς')
-            window.location.href='/leit/despHotLine.php';
+            window.alert('Η καταγγελία μεταφέρθηκε επιτυχώς')
+             window.location.href='/leit/desp.php';
             </SCRIPT>");
 	}
 	else {

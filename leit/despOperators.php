@@ -1,20 +1,22 @@
 <?php
 session_start();
 //echo $_SESSION["user"];
-if (isset($_SESSION['user']) and strcmp("p",$_SESSION['role'])==0) {
+
+if (isset($_SESSION['user']) and strcmp("p",$_SESSION['role'])!=0  and strcmp("t",$_SESSION['role'])!=0 and strcmp("g",$_SESSION['role'])!=0 and strcmp("e",$_SESSION['role'])!=0) {
+ $role=$_SESSION['role'];
 
 ?>
 
 
 <html>
 <head>
-<script src="getDate.js"></script>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.12.4.js"></script> 
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> 
+<script src="getDate.js"></script>
 
           <link rel="stylesheet" href="style.css">
           <link rel="stylesheet" href="header-user-dropdown.css">
@@ -42,7 +44,7 @@ if (isset($_SESSION['user']) and strcmp("p",$_SESSION['role'])==0) {
     
     <script>
     //setTimeout(createjson, 3000);
-window.setInterval(createjson, 300);
+window.setInterval(createjson, 1000);
      function createjson(){
 
 
@@ -57,10 +59,8 @@ window.setInterval(createjson, 300);
         }
 
 
-        xmlhttp.open("GET","createjson.php",true);
+        xmlhttp.open("GET","createjsonOperators.php",true);
         xmlhttp.send();
-        // xmlhttp.open("GET","createjsonRoleUName.php",true);
-        // xmlhttp.send();
     }
 
 </script>
@@ -100,12 +100,14 @@ window.setInterval(createjson, 300);
 <header class="header-user-dropdown">
 
     <div class="header-limiter">
-        <h1>Λειτουργός HelpLine</h1>
+        <h1>Λειτουργός <?php echo htmlspecialchars($role); ?></h1>
 
         <nav>
-            <a href="#" ></a>
-            <!-- <a href="#">View Statistics</a> -->
-            <a href="#">Live Chat</a>
+                    <a href="#" ></a>
+
+            <a href="#" >Προβολή Καταγγελιών</a>
+            <!-- <a href="#">View Statistics</a>
+            <a href="#">Live Chat</a> -->
            <!--  <a href="#">Reports</a>
             <a href="#">Roles <span class="header-new-feature">new</span></a> -->
         </nav>
@@ -115,9 +117,9 @@ window.setInterval(createjson, 300);
             <img src="person.png" alt="User Image"/>
 
             <ul>
-                <li><a href="/changepswd/change_password.php">Αλλαγή Κωδικού</a></li>
-                <li><a href="index - Copy.php">Δημιουργία Φόρμας</a></li>
-                <li><a href="logoutses.php" class="highlight">Αποσύνδεση</a></li>
+                 <li><a href="/changepswd/change_password.php">Αλλαγή Κωδικού</a></li>
+                <!-- <li><a href="CreateFormHotLine.php">Δημιουργία Φόρμας</a></li> -->
+                <li><a href="http://localhost/leit/logoutses.php" class="highlight">Αποσύνδεση</a></li>
             </ul>
         </div>
 
@@ -146,7 +148,7 @@ window.setInterval(createjson, 300);
 
 <script>
 
-window.setInterval(showjson, 500);
+window.setInterval(showjson, 2000);
 function post(test) {
     method = "post"; // Set method to post by default if not specified.
 
@@ -154,7 +156,7 @@ function post(test) {
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
     form.setAttribute("method", method);
-    form.setAttribute("action", "showHLDetails.php");
+    form.setAttribute("action", "showOtherOperatorDetails.php");
 
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
@@ -170,7 +172,7 @@ function post(test) {
 
      function showjson(){
     $(document).ready(function () {
-        $.getJSON("empdata.json", function (data) {
+        $.getJSON("empdataOtherOperator.json", function (data) {
 
             var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
             $.each(data, function (index, value) {
@@ -197,18 +199,16 @@ function post(test) {
             var tr = table.insertRow(-1);                   // TABLE ROW.
 
             for (var i = 0; i < col.length; i++) {
-               if(col[i]!="sended"){
-                  var th = document.createElement("th"); 
-                  if(col[i]=="ID"){
-                    var put="Κωδικός"
-                  }
-                  else {
-                    var put="Ημερ/νία Καταγγελίας"
-                  } 
-                     // TABLE HEADER.
-                  th.innerHTML = put;
-                  tr.appendChild(th);
-              }
+                var th = document.createElement("th");      // TABLE HEADER.
+                if (col[i]=="ID"){
+                    vali="Κωδικός"
+                }
+                else if(col[i]=="DateTime"){
+                    vali="Ημερομηνία Καταγγελίας"
+                }
+                // th.innerHTML = col[i];
+                th.innerHTML = vali;
+                tr.appendChild(th);
             }
 
             // ADD JSON DATA TO THE TABLE AS ROWS.
@@ -217,30 +217,23 @@ function post(test) {
                 tr = table.insertRow(-1);
 
                 for (var j = 0; j < col.length; j++) {
-                    
-                    if(arrItems[i][col[j]]=='y'){
-                      var pu="";
-                    }
-                    else if(arrItems[i][col[j]]=='r'){
-                      var pu=" ";
-                    }
-                    else if(j%3==1){
+                    var tabCell = tr.insertCell(-1);
+                         
+                    if(j%2==1){
                         var date= new Date(arrItems[i][col[j]]);
                         var datee=date.getDate();
                         var day=getTheDay(date.getDay());
                         var month=getTheMonth(date.getMonth());
-                        var pu=day+" "+datee+" "+month;
+                        var hours=date.getHours();
+                        var minutes=date.getMinutes();
+                        var year=date.getFullYear();
+                        var p=day+" "+datee+" "+month+" "+year+" "+hours+":"+minutes;
                     }
-                    else pu=arrItems[i][col[j]];
+                    else{
+                       var p=arrItems[i][col[j]]
+                    }
 
-                    var tabCell = tr.insertCell(-1);
-                    tabCell.innerHTML = pu;
-                    if(pu==""){
-                      tr.style.color="red";
-                    }
-                    if(pu==" "){
-                      tr.style.color="#21ba10";
-                    }
+                    tabCell.innerHTML = p;
 
                 }
 
@@ -328,3 +321,5 @@ function post(test) {
 
 exit();
 ?>
+
+
